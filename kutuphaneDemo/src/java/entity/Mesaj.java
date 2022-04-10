@@ -8,6 +8,15 @@ package entity;
  *
  * @author Sevda
  */
+
+import java.util.Date;
+
 public class Mesaj {
+    
+    private int mesaj_id;
+    private String mesaj;
+    private int mesajAtanKisi_id;
+    private Date atilmaTarihi;
+    
     
 }
