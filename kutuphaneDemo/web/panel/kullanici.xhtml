@@ -7,7 +7,6 @@
         <title>Kullanici Islemleri</title>
     </h:head>
     <h:body>
-
         <h:form>
             Ad=  <h:inputText value = "#{kullaniciController.entity.ad}" />
             <br/>
@@ -41,15 +40,17 @@
                 </h:column>
 
                 <h:column>
+                    <f:facet name ="header" >Mail</f:facet>
+                        #{k.mail}
+                </h:column>
+                 <h:column>
                     <f:facet name ="header" >Sifre</f:facet>
                         #{k.sifre}
                 </h:column>
-
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
                     <h:commandButton action = "#{kullaniciController.delete(k)}" value ="delete"/>
                     <h:commandButton action = "#{kullaniciController.entityUpdate(k)}" value ="update"/>
-
                 </h:column>
             </h:dataTable>
         </h:form>

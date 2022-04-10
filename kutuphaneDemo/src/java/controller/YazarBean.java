@@ -40,7 +40,9 @@ public class YazarBean implements Serializable {
         this.getDao().delete(yazar);
         entity = new Yazar();
     }
-
+   public void entityUpdate(Yazar k) {
+        this.entity = k;
+    }
     public void update() {
         this.getDao().update(entity);
         entity = new Yazar();

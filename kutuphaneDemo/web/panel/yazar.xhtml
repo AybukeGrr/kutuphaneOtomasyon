@@ -7,7 +7,42 @@
         <title>Yazar Islemleri</title>
     </h:head>
     <h:body>
-        
+         <h:form>
+            Ad= <h:inputText value = "#{yazarController.entity.ad}" />
+            <br/>
+            Soyad= <h:inputText value = "#{yazarController.entity.soyad}" />
+            <br/>
+
+            <h:commandButton rendered = "#{yazarController.entity.yazar_id == 0}" action = "#{yazarController.create()}" value = "create"/>
+            <h:commandButton rendered = "#{yazarController.entity.yazar_id != 0}" action = "#{yazarController.update()}" value = "update"/>
+
+
+        </h:form>
+        <hr />
+        <h:form>
+            <h:dataTable value = "#{yazarController.list}" var = "k" border = "1">
+                <h:column>
+                    <f:facet name ="header" >ID</f:facet>
+                        #{k.yazar_id}
+                </h:column>
+
+                <h:column>
+                    <f:facet name ="header" >Ad</f:facet>
+                        #{k.ad}
+                </h:column>
+
+                <h:column>
+                    <f:facet name ="header" >Soyad</f:facet>
+                        #{k.soyad}
+                </h:column>
+                <h:column>
+                    <f:facet name ="header" >Administration</f:facet>
+                    <h:commandButton action = "#{yazarController.delete(k)}" value ="delete"/>
+                    <h:commandButton action = "#{yazarController.entityUpdate(k)}" value ="update"/>
+
+                </h:column>
+            </h:dataTable>
+        </h:form>
     </h:body>
 </html>
 
