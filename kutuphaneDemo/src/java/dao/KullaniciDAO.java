@@ -73,4 +73,21 @@ public class KullaniciDAO extends DBConnection {
         }
         return kullaniciList;
     }
+
+    public Kullanici findById(int id) {
+        Kullanici c = null;
+        try {
+            Statement st = this.connect().createStatement();
+            String query = "select * from kullanicilar where id=" + id;
+
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                c = new Kullanici(rs.getInt("id"), rs.getString("ad"), rs.getString("soyad"), rs.getString("sifre"), rs.getString("mail"));
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return c;
+    }
 }

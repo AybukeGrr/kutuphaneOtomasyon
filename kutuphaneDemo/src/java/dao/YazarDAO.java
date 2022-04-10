@@ -73,4 +73,20 @@ public class YazarDAO extends DBConnection {
         }
         return yazarList;
     }
+    public Yazar findById(int id){
+        Yazar c = null;
+        try {
+            Statement st = this.connect().createStatement();
+            String query = "select * from yazarlar where id="+id;
+            
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                c = new Yazar(rs.getInt("id"), rs.getString("ad"), rs.getString("soyad"));
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return c;
+    }
 }

@@ -74,4 +74,20 @@ public class KitapOduncAlmaDAO extends DBConnection {
         }
         return oduncList;
     }
+    public KitapOduncAlma findById(int id){
+        KitapOduncAlma c = null;
+        try {
+            Statement st = this.connect().createStatement();
+            String query = "select * from kitapOduncAlma where id="+id;
+            
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                c = new KitapOduncAlma(rs.getInt("oduncAlma_id "), rs.getInt("oduncAlanKisi_id"), rs.getInt("oduncAlınanKitap_id"),rs.getTimestamp("iadeTarihi"));
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return c;
+    }
 }

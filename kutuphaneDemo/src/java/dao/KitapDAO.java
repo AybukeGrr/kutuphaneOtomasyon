@@ -73,4 +73,20 @@ public class KitapDAO extends DBConnection {
         }
         return kitapList;
     }
+        public Kitap findById(int id){
+        Kitap  c = null;
+        try {
+            Statement st = this.connect().createStatement();
+            String query = "select * from kitaplar where id="+id;
+            
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                c = new Kitap(rs.getInt("id"), rs.getString("ad"), rs.getInt("sayfaSayisi"), rs.getInt("kategori_id"), rs.getString("kitapKapagi"));
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return c;
+    }
 }

@@ -73,4 +73,20 @@ public class KategoriDAO extends DBConnection {
         }
         return kategoriList;
     }
+        public Kategori findById(int id){
+        Kategori c = null;
+        try {
+            Statement st = this.connect().createStatement();
+            String query = "select * from kategoriler where id="+id;
+            
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                c = new Kategori(rs.getInt("id"), rs.getString("ad"));
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return c;
+    }
 }

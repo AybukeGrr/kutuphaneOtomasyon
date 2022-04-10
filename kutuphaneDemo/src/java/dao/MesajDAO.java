@@ -74,4 +74,20 @@ public class MesajDAO extends DBConnection {
         }
         return mesajList;
     }
+    public Mesaj findById(int id){
+        Mesaj c = null;
+        try {
+            Statement st = this.connect().createStatement();
+            String query = "select * from mesajlar where id="+id;
+            
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+                c =new Mesaj(rs.getInt("mesaj_id"), rs.getString("mesaj"), rs.getInt("mesajAtanKisi_id"), rs.getTimestamp("atilmaTarihi"));
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return c;
+    }
 }
