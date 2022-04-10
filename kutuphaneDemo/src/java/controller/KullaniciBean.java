@@ -12,6 +12,7 @@ import entity.Kullanici;
 import jakarta.enterprise.context.Dependent;
 
 import java.util.List;
+
 /**
  *
  * @author Sevda
@@ -19,29 +20,37 @@ import java.util.List;
 @Named(value = "kullaniciController")
 @SessionScoped
 public class KullaniciBean implements Serializable {
-    
+
     private Kullanici entity;
     private KullaniciDAO dao;
     private List<Kullanici> list;
 
     public KullaniciBean() {
+        
     }
-
-     public void create(){
+    
+    public String getTitle(int id){
+        Kullanici c = this.getDao().findById(id);
+        return null;
+    }
+    
+    public void create() {
         this.getDao().create(entity);
         entity = new Kullanici();
     }
-    public void delete(Kullanici c){
-        this.getDao().delete(c);
+
+    public void delete(Kullanici kullanici) {
+        this.getDao().delete(kullanici);
         entity = new Kullanici();
     }
-    public void update(){
+
+    public void update() {
         this.getDao().update(entity);
         entity = new Kullanici();
     }
-    
+
     public Kullanici getEntity() {
-        if(entity == null){
+        if (entity == null) {
             entity = new Kullanici();
         }
         return entity;
@@ -52,7 +61,7 @@ public class KullaniciBean implements Serializable {
     }
 
     public KullaniciDAO getDao() {
-        if(dao == null){
+        if (dao == null) {
             dao = new KullaniciDAO();
         }
         return dao;
@@ -71,5 +80,4 @@ public class KullaniciBean implements Serializable {
         this.list = list;
     }
 
-    
 }
