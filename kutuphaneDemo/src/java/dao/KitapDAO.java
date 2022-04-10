@@ -35,7 +35,7 @@ public class KitapDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "update kitaplar set kategori_id='" +kitap.getKategori_id()+",ad='"+ kitap.getAd() + "',sayfasayisi='" + kitap.getSayfaSayisi()+"',kitapKapagi='"+ kitap.getKitapKapagi() +  "'where kitap_id=" + kitap.getKitap_id();
+            String query = "update kitaplar set kategori_id='" +kitap.getKategori_id()+",ad='"+ kitap.getAd() + "',sayfasayisi='" + kitap.getSayfaSayisi()+"',kitapKapagi='"+ kitap.getKitapKapagi() +  "' where kitap_id=" + kitap.getKitap_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {

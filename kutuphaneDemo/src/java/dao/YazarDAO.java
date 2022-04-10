@@ -35,7 +35,7 @@ public class YazarDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "update yazarlar set ad='" + yazar.getAd() + ",soyad='" + yazar.getSoyad() + "'where yazar_id=" + yazar.getYazar_id();
+            String query = "update yazarlar set ad='" + yazar.getAd() + ",soyad='" + yazar.getSoyad() + "' where yazar_id=" + yazar.getYazar_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {

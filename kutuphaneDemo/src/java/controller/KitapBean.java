@@ -40,6 +40,9 @@ public class KitapBean implements Serializable {
         this.getDao().delete(kitap);
         entity = new Kitap();
     }
+        public void entityUpdate(Kitap k) {
+        this.entity = k;
+    }
 
     public void update() {
         this.getDao().update(entity);

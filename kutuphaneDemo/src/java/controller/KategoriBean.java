@@ -42,7 +42,9 @@ public class KategoriBean implements Serializable {
         this.getDao().delete(kategori);
         entity = new Kategori();
     }
-
+      public void entityUpdate(Kategori k) {
+        this.entity = k;
+    }
     public void update() {
         this.getDao().update(entity);
         entity = new Kategori();

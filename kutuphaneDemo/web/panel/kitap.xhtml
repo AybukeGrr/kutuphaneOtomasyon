@@ -8,7 +8,53 @@
     </h:head>
     <h:body>
         <h:form>
-             
+            Kategori= <h:inputText value = "#{kitapController.entity.kategori_id}" />
+            <br/>
+            Ad=  <h:inputText value = "#{kitapController.entity.ad}" />
+            <br/>
+            SayfaSayisi=  <h:inputText value = "#{kullaniciController.entity.soyad}" />
+            <br/>
+            Kitap Kapaği= <h:inputText value = "#{kullaniciController.entity.mail}" />
+            <br/>
+
+            <h:commandButton rendered = "#{kitapController.entity.kitap_id == 0}" action = "#{kitapController.create()}" value = "create"/>
+            <h:commandButton rendered = "#{kitapController.entity.kitap_id != 0}" action = "#{kitapController.update()}" value = "update"/>
+
+
+        </h:form>
+        <hr />
+        <h:form>
+            <h:dataTable value = "#{kitapController.list}" var = "k" border = "1">
+                <h:column>
+                    <f:facet name ="header" >ID</f:facet>
+                        #{k.kitap_id}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name ="header" >Kategori</f:facet>
+                        #{k.kategori_id}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name ="header" >Ad</f:facet>
+                        #{k.ad}
+                </h:column>
+
+                <h:column>
+                    <f:facet name ="header" >Sayfa Sayısı</f:facet>
+                        #{k.sayfaSayisi}
+                </h:column>
+
+                <h:column>
+                    <f:facet name ="header" >Kitap Kapaği</f:facet>
+                        #{k.kitapKapagi}
+                </h:column>
+                <h:column>
+                    <f:facet name ="header" >Administration</f:facet>
+                    <h:commandButton action = "#{kitapController.delete(k)}" value ="delete"/>
+                    <h:commandButton action = "#{kitapController.entityUpdate(k)}" value ="update"/>
+                </h:column>
+            </h:dataTable>
         </h:form>
     </h:body>
 </html>

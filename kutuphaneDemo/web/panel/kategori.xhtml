@@ -7,7 +7,33 @@
         <title>Kategori Islemleri</title>
     </h:head>
     <h:body>
- 
+        <h:form>
+            Tür=  <h:inputText value = "#{kategoriController.entity.ad}" />
+            <br/>
+
+             <h:commandButton rendered = "#{kategoriController.entity.kategori_id == 0}" action = "#{kategoriController.create()}" value = "create"/>
+            <h:commandButton rendered = "#{kategoriController.entity.kategori_id != 0}" action = "#{kategoriController.update()}" value = "update"/>
+
+
+        </h:form>
+        <hr />
+        <h:form>
+            <h:dataTable value = "#{kategoriController.list}" var = "k" border = "1">
+                <h:column>
+                    <f:facet name ="header" >ID</f:facet>
+                        #{k.kategori_id}
+                </h:column>
+                <h:column>
+                    <f:facet name ="header" >Tür</f:facet>
+                        #{k.ad}
+                </h:column>
+                <h:column>
+                    <f:facet name ="header" >Administration</f:facet>
+                    <h:commandButton action = "#{kategoriController.delete(k)}" value ="delete"/>
+                    <h:commandButton action = "#{kategoriController.entityUpdate(k)}" value ="update"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
     </h:body>
 </html>
 
