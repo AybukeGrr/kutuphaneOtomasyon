@@ -1,12 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Kutuphane Otomasyon Demo</title>
+        <title>Kullanici Islemleri</title>
     </h:head>
     <h:body>
-        Hello Demo
+        <h:form>
+            <h:commandButton style="margin:14px 0px 0px 4px;" action="/panel/kullanici.xhmtl" value="Kullanıcılar"/>
+            <h:commandButton style="margin:14px 0px 0px 4px;" action="/panel/kitap.xhmtl" value="Kitaplar"/>
+            <h:commandButton style="margin:14px 0px 0px 4px;" action="/panel/oduncislemleri.xhmtl" value="Ödünc İşlemleri"/>
+            <h:commandButton style="margin:14px 0px 0px 4px;" action="/panel/kategori.xhmtl" value="KATEGORİ"/>
+            <h:commandButton style="margin:14px 0px 0px 4px;" action="/panel/yazar.xhmtl" value="Yazarlar"/>
+            <h:commandButton style="margin:14px 0px 0px 4px;" action="/panel/mesaj.xhmtl" value="Mesajlar"/>
+        </h:form>
     </h:body>
 </html>
 
