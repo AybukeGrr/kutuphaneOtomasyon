@@ -17,7 +17,8 @@ public class DBConnection {
 
         try {
             Class.forName("org.postgresql.Driver");
-            c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/kutuphanedb ", "postgres", "sevda7446");
+            c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/kutuphanedb", "postgres", "sevda7446");
+            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }

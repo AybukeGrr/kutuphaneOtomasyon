@@ -6,8 +6,6 @@ package dao;
 
 import entity.Kullanici;
 import util.DBConnection;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -23,7 +21,7 @@ public class KullaniciDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "insert into kullanicilar(ad,soyad,sifre,mail)values('" + kullanici.getAd() + "','" + kullanici.getSoyad() + "','" + kullanici.getSifre() + "','" + kullanici.getMail() + "')";
+            String query = "insert into kullanicilar(ad,soyad,mail,sifre)values('" + kullanici.getAd() + "','" + kullanici.getSoyad() + "','" + kullanici.getMail() + "','" + kullanici.getSifre() + "')";
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -35,7 +33,7 @@ public class KullaniciDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "update kullanicilar set ad='" + kullanici.getAd() + ",soyad='" + kullanici.getSoyad() + "',sifre='" + kullanici.getSifre() + "',mail='" + kullanici.getMail() + "'where id=" + kullanici.getKullanici_id();
+            String query = "update kullanicilar set ad='" + kullanici.getAd() + "',soyad='" + kullanici.getSoyad() + "',sifre='" + kullanici.getSifre() + "',mail='" + kullanici.getMail() + "' where kullanici_id=" + kullanici.getKullanici_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -47,7 +45,7 @@ public class KullaniciDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "delete from kullanicilar where id=" + kullanici.getKullanici_id();
+            String query = "delete from kullanicilar where kullanici_id=" + kullanici.getKullanici_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -56,6 +54,7 @@ public class KullaniciDAO extends DBConnection {
     }
 
     public List<Kullanici> getList() {
+
         List<Kullanici> kullaniciList = new ArrayList<>();
 
         try {
@@ -63,9 +62,8 @@ public class KullaniciDAO extends DBConnection {
 
             String query = "Select * from kullanicilar";
             ResultSet rs = st.executeQuery(query);
-
             while (rs.next()) {
-                kullaniciList.add(new Kullanici(rs.getInt("id"), rs.getString("ad"), rs.getString("soyad"), rs.getString("sifre"), rs.getString("mail")));
+                kullaniciList.add(new Kullanici(rs.getInt("kullanici_id"), rs.getString("ad"), rs.getString("soyad"), rs.getString("sifre"), rs.getString("mail")));
             }
 
         } catch (Exception ex) {
@@ -78,11 +76,11 @@ public class KullaniciDAO extends DBConnection {
         Kullanici c = null;
         try {
             Statement st = this.connect().createStatement();
-            String query = "select * from kullanicilar where id=" + id;
+            String query = "select * from kullanicilar where kullanici_id=" + id;
 
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                c = new Kullanici(rs.getInt("id"), rs.getString("ad"), rs.getString("soyad"), rs.getString("sifre"), rs.getString("mail"));
+                c = new Kullanici(rs.getInt("kullanici_id"), rs.getString("ad"), rs.getString("soyad"), rs.getString("sifre"), rs.getString("mail"));
             }
 
         } catch (Exception e) {

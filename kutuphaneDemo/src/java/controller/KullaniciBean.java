@@ -26,17 +26,21 @@ public class KullaniciBean implements Serializable {
     private List<Kullanici> list;
 
     public KullaniciBean() {
-        
+
     }
-    
-    public String getTitle(int id){
+
+    public String getTitle(int id) {
         Kullanici c = this.getDao().findById(id);
         return null;
     }
-    
+
     public void create() {
         this.getDao().create(entity);
         entity = new Kullanici();
+    }
+
+    public void entityUpdate(Kullanici k) {
+        this.entity = k;
     }
 
     public void delete(Kullanici kullanici) {
@@ -61,8 +65,8 @@ public class KullaniciBean implements Serializable {
     }
 
     public KullaniciDAO getDao() {
-        if (dao == null) {
-            dao = new KullaniciDAO();
+        if (this.dao == null) {
+            this.dao = new KullaniciDAO();
         }
         return dao;
     }
