@@ -8,6 +8,16 @@
     </h:head>
     <h:body>
         <h:form>
+            
+    
+            Ad=  <h:inputText value = "#{kullaniciController.entity.ad}" />
+            <br/>
+            Soyad=  <h:inputText value = "#{kullaniciController.entity.soyad}" />
+            <br/>
+            Mail= <h:inputText value = "#{kullaniciController.entity.soyad}" />
+            <br/>
+            Sifre = <h:inputSecret value = "#{kullaniciController.entity.sifre}" />
+            
             <h:commandButton style="margin:10px 0px 0px 4px;" action="/panel/kullanici.xhmtl" value="Kullanıcılar"/>
             <h:commandButton style="margin:10px 0px 0px 4px;" action="/panel/kitap.xhmtl" value="Kitaplar"/>
             <h:commandButton style="margin:10px 0px 0px 4px;" action="/panel/oduncislemleri.xhmtl" value="Ödünc İşlemleri"/>

@@ -9,7 +9,9 @@ import entity.Kategori;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.security.Timestamp;
 import java.util.List;
+
 
 /**
  *
@@ -32,8 +34,8 @@ public class KategoriBean implements Serializable {
     }
     
     public void create() {
-        this.getDao().create(entity);
-        entity = new Kategori();
+        this.getDao().create(entity);  
+         entity = new Kategori();
     }
 
     public void delete(Kategori kategori) {

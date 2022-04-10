@@ -4,6 +4,8 @@
  */
 package entity;
 
+import java.security.Timestamp;
+
 /**
  *
  * @author Sevda
@@ -36,6 +38,15 @@ public class Kategori {
     public void setAd(String ad) {
         this.ad = ad;
     }
+
+    @Override
+    public String toString() {
+        return "Kategori{" + "kategori_id=" + kategori_id + ", ad=" + ad + '}';
+    }
+
+    
+
+    
     
     
 }

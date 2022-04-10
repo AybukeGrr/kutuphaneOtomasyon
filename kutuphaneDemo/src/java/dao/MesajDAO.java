@@ -36,7 +36,7 @@ public class MesajDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "update mesajlar set mesajAtanKisi_id='" + mesaj.getMesajAtanKisi_id() + ",mesaj='" + mesaj.getMesaj() + "',atilmaTarihi='" + mesaj.getAtilmaTarihi()  + "'where id=" + mesaj.getMesaj_id();
+            String query = "update mesajlar set mesajAtanKisi_id='" + mesaj.getMesajAtanKisi_id() + ",mesaj='" + mesaj.getMesaj() + "',atilmaTarihi='" + mesaj.getAtilmaTarihi()  + "'where mesaj_id=" + mesaj.getMesaj_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -48,7 +48,7 @@ public class MesajDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "delete from mesajlar where id=" + mesaj.getMesaj_id();
+            String query = "delete from mesajlar where mesaj_id=" + mesaj.getMesaj_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -78,8 +78,7 @@ public class MesajDAO extends DBConnection {
         Mesaj c = null;
         try {
             Statement st = this.connect().createStatement();
-            String query = "select * from mesajlar where id="+id;
-            
+            String query = "select * from mesajlar where mesaj_id="+id;
             ResultSet rs = st.executeQuery(query);
             while(rs.next()){
                 c =new Mesaj(rs.getInt("mesaj_id"), rs.getString("mesaj"), rs.getInt("mesajAtanKisi_id"), rs.getTimestamp("atilmaTarihi"));

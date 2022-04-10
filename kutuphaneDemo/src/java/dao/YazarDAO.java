@@ -35,7 +35,7 @@ public class YazarDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "update yazarlar set ad='" + yazar.getAd() + ",soyad='" + yazar.getSoyad() + "'where id=" + yazar.getYazar_id();
+            String query = "update yazarlar set ad='" + yazar.getAd() + ",soyad='" + yazar.getSoyad() + "'where yazar_id=" + yazar.getYazar_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -47,7 +47,7 @@ public class YazarDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "delete from yazarlar where id=" + yazar.getYazar_id();
+            String query = "delete from yazarlar where yazar_id=" + yazar.getYazar_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -63,9 +63,8 @@ public class YazarDAO extends DBConnection {
 
             String query = "Select * from yazarlar";
             ResultSet rs = st.executeQuery(query);
-
             while (rs.next()) {
-                yazarList.add(new Yazar(rs.getInt("id"), rs.getString("ad"), rs.getString("soyad")));
+                yazarList.add(new Yazar(rs.getInt("yazar_id"), rs.getString("ad"), rs.getString("soyad")));
             }
 
         } catch (Exception ex) {
@@ -77,11 +76,11 @@ public class YazarDAO extends DBConnection {
         Yazar c = null;
         try {
             Statement st = this.connect().createStatement();
-            String query = "select * from yazarlar where id="+id;
+            String query = "select * from yazarlar where yazar_id="+id;
             
             ResultSet rs = st.executeQuery(query);
             while(rs.next()){
-                c = new Yazar(rs.getInt("id"), rs.getString("ad"), rs.getString("soyad"));
+                c = new Yazar(rs.getInt("yazar_id"), rs.getString("ad"), rs.getString("soyad"));
             }
             
         } catch (Exception e) {

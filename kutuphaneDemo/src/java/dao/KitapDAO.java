@@ -35,7 +35,7 @@ public class KitapDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "update kitaplar set kategori_id='" +kitap.getKategori_id()+",ad='"+ kitap.getAd() + "',sayfasayisi='" + kitap.getSayfaSayisi()+"',kitapKapagi='"+ kitap.getKitapKapagi() +  "'where id=" + kitap.getKitap_id();
+            String query = "update kitaplar set kategori_id='" +kitap.getKategori_id()+",ad='"+ kitap.getAd() + "',sayfasayisi='" + kitap.getSayfaSayisi()+"',kitapKapagi='"+ kitap.getKitapKapagi() +  "'where kitap_id=" + kitap.getKitap_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -47,7 +47,7 @@ public class KitapDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "delete from kitaplar where id=" + kitap.getKitap_id();
+            String query = "delete from kitaplar where kitap_id=" + kitap.getKitap_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -63,9 +63,8 @@ public class KitapDAO extends DBConnection {
 
             String query = "Select * from kitaplar";
             ResultSet rs = st.executeQuery(query);
-
             while (rs.next()) {
-                kitapList.add(new Kitap(rs.getInt("id"), rs.getString("ad"), rs.getInt("sayfaSayisi"), rs.getInt("kategori_id"), rs.getString("kitapKapagi")));
+                kitapList.add(new Kitap(rs.getInt("kitap_id"), rs.getString("ad"), rs.getInt("sayfaSayisi"), rs.getInt("kategori_id"), rs.getString("kitapKapagi")));
             }
 
         } catch (Exception ex) {
@@ -77,11 +76,11 @@ public class KitapDAO extends DBConnection {
         Kitap  c = null;
         try {
             Statement st = this.connect().createStatement();
-            String query = "select * from kitaplar where id="+id;
+            String query = "select * from kitaplar where kitap_id="+id;
             
             ResultSet rs = st.executeQuery(query);
             while(rs.next()){
-                c = new Kitap(rs.getInt("id"), rs.getString("ad"), rs.getInt("sayfaSayisi"), rs.getInt("kategori_id"), rs.getString("kitapKapagi"));
+                c = new Kitap(rs.getInt("kitap_id"), rs.getString("ad"), rs.getInt("sayfaSayisi"), rs.getInt("kategori_id"), rs.getString("kitapKapagi"));
             }
             
         } catch (Exception e) {
