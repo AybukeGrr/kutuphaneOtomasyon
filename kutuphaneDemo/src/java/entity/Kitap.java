@@ -8,6 +8,6 @@ package entity;
  *
  * @author Sevda
  */
-public class Kategoriler {
+public class Kitap {
     
 }
