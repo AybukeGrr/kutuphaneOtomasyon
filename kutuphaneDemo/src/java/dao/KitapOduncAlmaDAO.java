@@ -66,7 +66,7 @@ public class KitapOduncAlmaDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                oduncList.add(new KitapOduncAlma(rs.getInt("oduncAlma_id "), rs.getInt("oduncAlanKisi_id"), rs.getInt("oduncAlınanKitap_id"),rs.getTimestamp("iadeTarihi")));
+                oduncList.add(new KitapOduncAlma(rs.getInt("oduncAlma_id "), rs.getInt("oduncAlanKisi_id"), rs.getInt("oduncAlınanKitap_id"),rs.getTimestamp("iadeTarihi"), rs.getTimestamp("oduncAlmaTarihi")));
             }
 
         } catch (Exception ex) {

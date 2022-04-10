@@ -17,12 +17,14 @@ public class KitapOduncAlma {
     private int oduncAlanKisi_id;
     private int oduncAlınanKitap_id;
     private Date iadeTarihi;
+    private Date oduncAlmaTarihi;
 
-    public KitapOduncAlma(int oduncAlma_id, int oduncAlanKisi_id, int oduncAlınanKitap_id, Date iadeTarihi) {
+    public KitapOduncAlma(int oduncAlma_id, int oduncAlanKisi_id, int oduncAlınanKitap_id, Date iadeTarihi, Date oduncAlmaTarihi) {
         this.oduncAlma_id = oduncAlma_id;
         this.oduncAlanKisi_id = oduncAlanKisi_id;
         this.oduncAlınanKitap_id = oduncAlınanKitap_id;
         this.iadeTarihi = iadeTarihi;
+        this.oduncAlmaTarihi = oduncAlmaTarihi;
     }
 
     public KitapOduncAlma() {
@@ -59,6 +61,15 @@ public class KitapOduncAlma {
     public void setIadeTarihi(Date iadeTarihi) {
         this.iadeTarihi = iadeTarihi;
     }
+
+    public Date getOduncAlmaTarihi() {
+        return oduncAlmaTarihi;
+    }
+
+    public void setOduncAlmaTarihi(Date oduncAlmaTarihi) {
+        this.oduncAlmaTarihi = oduncAlmaTarihi;
+    }
     
     
+
 }
