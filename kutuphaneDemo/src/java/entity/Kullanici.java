@@ -56,7 +56,7 @@ public class Kullanici {
         this.kullanici_id = kullanici_id;
     }
 
-    public Kullanici(String ad, String soyad, String sifre, String mail, int kullanici_id) {
+    public Kullanici( int kullanici_id,String ad, String soyad, String sifre, String mail) {
         this.ad = ad;
         this.soyad = soyad;
         this.sifre = sifre;

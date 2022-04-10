@@ -1,7 +1,76 @@
- 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package dao;
 
- 
-public class YazarDAO {
-    
+import entity.Yazar;
+import util.DBConnection;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author Sevda
+ */
+public class YazarDAO extends DBConnection {
+
+    public void create(Yazar yazar) {
+        try {
+            Statement st = this.connect().createStatement();
+
+            String query = "insert into yazarlar(ad,soyad)values('" + yazar.getAd() + "','" + yazar.getSoyad() + "')";
+            st.executeUpdate(query);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void update(Yazar yazar) {
+        try {
+            Statement st = this.connect().createStatement();
+
+            String query = "update yazarlar set ad='" + yazar.getAd() + ",soyad='" + yazar.getSoyad() + "'where id=" + yazar.getYazar_id();
+            st.executeUpdate(query);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void delete(Yazar yazar) {
+        try {
+            Statement st = this.connect().createStatement();
+
+            String query = "delete from yazarlar where id=" + yazar.getYazar_id();
+            st.executeUpdate(query);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public List<Yazar> getList() {
+        List<Yazar> yazarList = new ArrayList<>();
+
+        try {
+            Statement st = this.connect().createStatement();
+
+            String query = "Select * from yazarlar";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                yazarList.add(new Yazar(rs.getInt("id"), rs.getString("ad"), rs.getString("soyad")));
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return yazarList;
+    }
 }

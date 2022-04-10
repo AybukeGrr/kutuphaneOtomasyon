@@ -35,7 +35,7 @@ public class KategoriDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "update kategoriler set('" + kategori.getAd() + "')";
+            String query = "update kategoriler set ad='" + kategori.getAd() + "'where id="+kategori.getKategori_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -47,7 +47,7 @@ public class KategoriDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "delete from kategoriler where id='" + kategori.getKategori_id() + "')";
+            String query = "delete from kategoriler where id=" + kategori.getKategori_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
