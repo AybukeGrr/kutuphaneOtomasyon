@@ -14,12 +14,12 @@ import java.io.Serializable;
  */
 @Named(value = "kitapController")
 @SessionScoped
-public class KitapController implements Serializable {
+public class KitapBean implements Serializable {
 
     /**
      * Creates a new instance of KitapController
      */
-    public KitapController() {
+    public KitapBean() {
     }
     
 }

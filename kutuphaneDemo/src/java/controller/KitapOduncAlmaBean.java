@@ -12,14 +12,14 @@ import java.io.Serializable;
  *
  * @author Sevda
  */
-@Named(value = "kategoriController")
+@Named(value = "kitapOduncAlmaController")
 @SessionScoped
-public class KategoriController implements Serializable {
+public class KitapOduncAlmaBean implements Serializable {
 
     /**
-     * Creates a new instance of KategoriController
+     * Creates a new instance of KitapOduncAlmaController
      */
-    public KategoriController() {
+    public KitapOduncAlmaBean() {
     }
     
 }
