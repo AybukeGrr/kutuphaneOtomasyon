@@ -9,20 +9,20 @@ package entity;
  * @author Sevda
  *
  */
-import java.util.Date;
+ 
 
 public class KitapOduncAlma {
 
     private int oduncAlma_id;
     private int oduncAlanKisi_id;
-    private int oduncAlınanKitap_id;
-    private Date iadeTarihi;
-    private Date oduncAlmaTarihi;
+    private int oduncAlinanKitap_id;
+    private String iadeTarihi;
+    private String oduncAlmaTarihi;
 
-    public KitapOduncAlma(int oduncAlma_id, int oduncAlanKisi_id, int oduncAlınanKitap_id, Date iadeTarihi, Date oduncAlmaTarihi) {
+    public KitapOduncAlma(int oduncAlma_id, int oduncAlanKisi_id, int oduncAlinanKitap_id, String iadeTarihi, String oduncAlmaTarihi) {
         this.oduncAlma_id = oduncAlma_id;
         this.oduncAlanKisi_id = oduncAlanKisi_id;
-        this.oduncAlınanKitap_id = oduncAlınanKitap_id;
+        this.oduncAlinanKitap_id = oduncAlinanKitap_id;
         this.iadeTarihi = iadeTarihi;
         this.oduncAlmaTarihi = oduncAlmaTarihi;
     }
@@ -46,27 +46,27 @@ public class KitapOduncAlma {
         this.oduncAlanKisi_id = oduncAlanKisi_id;
     }
 
-    public int getOduncAlınanKitap_id() {
-        return oduncAlınanKitap_id;
+    public int getOduncAlinanKitap_id() {
+        return oduncAlinanKitap_id;
     }
 
-    public void setOduncAlınanKitap_id(int oduncAlınanKitap_id) {
-        this.oduncAlınanKitap_id = oduncAlınanKitap_id;
+    public void setOduncAlinanKitap_id(int oduncAlinanKitap_id) {
+        this.oduncAlinanKitap_id = oduncAlinanKitap_id;
     }
 
-    public Date getIadeTarihi() {
+    public String getIadeTarihi() {
         return iadeTarihi;
     }
 
-    public void setIadeTarihi(Date iadeTarihi) {
+    public void setIadeTarihi(String iadeTarihi) {
         this.iadeTarihi = iadeTarihi;
     }
 
-    public Date getOduncAlmaTarihi() {
+    public String getOduncAlmaTarihi() {
         return oduncAlmaTarihi;
     }
 
-    public void setOduncAlmaTarihi(Date oduncAlmaTarihi) {
+    public void setOduncAlmaTarihi(String oduncAlmaTarihi) {
         this.oduncAlmaTarihi = oduncAlmaTarihi;
     }
     

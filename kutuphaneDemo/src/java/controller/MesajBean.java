@@ -32,6 +32,7 @@ public class MesajBean implements Serializable {
     }
 
     public void create() {
+        
         this.getDao().create(entity);
         entity = new Mesaj();
     }
@@ -39,6 +40,9 @@ public class MesajBean implements Serializable {
     public void delete(Mesaj mesaj) {
         this.getDao().delete(mesaj);
         entity = new Mesaj();
+    }
+   public void entityUpdate(Mesaj k) {
+        this.entity = k;
     }
 
     public void update() {

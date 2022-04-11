@@ -24,7 +24,7 @@ public class MesajDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "insert into mesajlar(mesajAtanKisi_id,mesaj,atilmaTarihi)values('" + mesaj.getMesajAtanKisi_id()+ "','" + mesaj.getMesaj() + "','" + mesaj.getAtilmaTarihi()+ "')";
+            String query = "insert into mesajlar(mesajAtanKisi_id,mesaj,atilmaTarihi)values('" + mesaj.getMesajAtanKisi_id() + "','" + mesaj.getMesaj() + "','" + mesaj.getAtilmaTarihi() + "')";
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -36,7 +36,7 @@ public class MesajDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "update mesajlar set mesajAtanKisi_id='" + mesaj.getMesajAtanKisi_id() + ",mesaj='" + mesaj.getMesaj() + "',atilmaTarihi='" + mesaj.getAtilmaTarihi()  + "'where mesaj_id=" + mesaj.getMesaj_id();
+            String query = "update mesajlar set mesajAtanKisi_id='" + mesaj.getMesajAtanKisi_id() + ",mesaj='" + mesaj.getMesaj() + "',atilmaTarihi='" + mesaj.getAtilmaTarihi() + "' where mesaj_id=" + mesaj.getMesaj_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -66,7 +66,8 @@ public class MesajDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                mesajList.add(new Mesaj(rs.getInt("mesaj_id"), rs.getString("mesaj"), rs.getInt("mesajAtanKisi_id"), rs.getTimestamp("atilmaTarihi")));
+                mesajList.add(new Mesaj(rs.getInt("mesaj_id"), rs.getString("mesaj"),
+                        rs.getInt("mesajAtanKisi_id"), rs.getString("atilmaTarihi")));
             }
 
         } catch (Exception ex) {
@@ -74,16 +75,19 @@ public class MesajDAO extends DBConnection {
         }
         return mesajList;
     }
-    public Mesaj findById(int id){
+
+    public Mesaj findById(int id) {
         Mesaj c = null;
         try {
             Statement st = this.connect().createStatement();
-            String query = "select * from mesajlar where mesaj_id="+id;
+            String query = "select * from mesajlar where mesaj_id=" + id;
             ResultSet rs = st.executeQuery(query);
-            while(rs.next()){
-                c =new Mesaj(rs.getInt("mesaj_id"), rs.getString("mesaj"), rs.getInt("mesajAtanKisi_id"), rs.getTimestamp("atilmaTarihi"));
+            while (rs.next()) {
+                c = new Mesaj(rs.getInt("mesaj_id"), rs.getString("mesaj"),
+                        rs.getInt("mesajAtanKisi_id"), rs.getString("atilmaTarihi"));
+
             }
-            
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -25,20 +25,24 @@ public class KitapOduncAlmaBean implements Serializable {
 
     public KitapOduncAlmaBean() {
     }
-    
-    public String getTitle(int id){
+
+    public String getTitle(int id) {
         KitapOduncAlma c = this.getDao().findById(id);
         return null;
     }
-    
+
     public void create() {
         this.getDao().create(entity);
         entity = new KitapOduncAlma();
     }
 
     public void delete(KitapOduncAlma kitapOduncAlma) {
-        this.getDao().delete( kitapOduncAlma);
+        this.getDao().delete(kitapOduncAlma);
         entity = new KitapOduncAlma();
+    }
+
+    public void entityUpdate(KitapOduncAlma k) {
+        this.entity = k;
     }
 
     public void update() {

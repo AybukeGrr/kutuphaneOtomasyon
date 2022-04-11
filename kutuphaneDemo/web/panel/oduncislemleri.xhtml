@@ -7,7 +7,52 @@
         <title>Ödünc Islemleri</title>
     </h:head>
     <h:body>
-       
+        <h:form>
+            Odunc Alan Kisi ID= <h:inputText value = "#{kitapOduncAlmaController.entity.oduncAlanKisi_id}" />
+            <br/>
+            Odunc Alınan Kitap ID= <h:inputText value = "#{kitapOduncAlmaController.entity.oduncAlinanKitap_id}" />
+            <br/>
+            Odunc Alma Tarihi= <h:inputText value = "#{kitapOduncAlmaController.entity.oduncAlmaTarihi}" />
+            <br/>
+            İade Tarihi= <h:inputText value = "#{kitapOduncAlmaController.entity.iadeTarihi}" />
+
+            <h:commandButton rendered = "#{kitapOduncAlmaController.entity.oduncAlma_id == 0}" action = "#{kitapOduncAlmaController.create()}" value = "create"/>
+            <h:commandButton rendered = "#{kitapOduncAlmaController.entity.oduncAlma_id != 0}" action = "#{kitapOduncAlmaController.update()}" value = "update"/>
+
+
+        </h:form>
+        <hr />
+        <h:form>
+            <h:dataTable value = "#{kitapOduncAlmaController.list}" var = "k" border = "1">
+                <h:column>
+                    <f:facet name ="header" >ID</f:facet>
+                        #{k.oduncAlma_id}
+                </h:column>
+                <h:column>
+                    <f:facet name ="header" >Odunc Alan Kisi ID</f:facet>
+                        #{k.oduncAlanKisi_id}
+                </h:column>
+                <h:column>
+                    <f:facet name ="header" >Odunc Alınan Kitap ID</f:facet>
+                        #{k.oduncAlinanKitap_id}
+                </h:column>
+                <h:column>
+                    <f:facet name ="header" >Odunc Alma Tarihi</f:facet>
+                        #{k.oduncAlmaTarihi}
+                </h:column>
+                <h:column>
+                    <f:facet name ="header" >İade Tarihi</f:facet>
+                        #{k.iadeTarihi}
+                </h:column>
+
+                <h:column>
+                    <f:facet name ="header" >Administration</f:facet>
+                    <h:commandButton action = "#{kitapOduncAlmaController.delete(k)}" value ="delete"/>
+                    <h:commandButton action = "#{kitapOduncAlmaController.entityUpdate(k)}" value ="update"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+
     </h:body>
 </html>
 

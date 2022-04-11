@@ -12,9 +12,9 @@
             <br/>
             Ad=  <h:inputText value = "#{kitapController.entity.ad}" />
             <br/>
-            SayfaSayisi=  <h:inputText value = "#{kullaniciController.entity.soyad}" />
+            SayfaSayisi=  <h:inputText value = "#{kitapController.entity.sayfaSayisi}" />
             <br/>
-            Kitap Kapaği= <h:inputText value = "#{kullaniciController.entity.mail}" />
+            Kitap Kapaği= <h:inputText value = "#{kitapController.entity.kitapKapagi}" />
             <br/>
 
             <h:commandButton rendered = "#{kitapController.entity.kitap_id == 0}" action = "#{kitapController.create()}" value = "create"/>

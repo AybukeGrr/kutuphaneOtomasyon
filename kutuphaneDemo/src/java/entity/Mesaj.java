@@ -15,12 +15,12 @@ public class Mesaj {
     private int mesaj_id;
     private String mesaj;
     private int mesajAtanKisi_id;
-    private Date atilmaTarihi;
+    private String atilmaTarihi;
 
     public Mesaj() {
     }
 
-    public Mesaj(int mesaj_id, String mesaj, int mesajAtanKisi_id, Date atilmaTarihi) {
+    public Mesaj(int mesaj_id, String mesaj, int mesajAtanKisi_id, String atilmaTarihi) {
         this.mesaj_id = mesaj_id;
         this.mesaj = mesaj;
         this.mesajAtanKisi_id = mesajAtanKisi_id;
@@ -51,11 +51,11 @@ public class Mesaj {
         this.mesajAtanKisi_id = mesajAtanKisi_id;
     }
 
-    public Date getAtilmaTarihi() {
+    public String getAtilmaTarihi() {
         return atilmaTarihi;
     }
 
-    public void setAtilmaTarihi(Date atilmaTarihi) {
+    public void setAtilmaTarihi(String atilmaTarihi) {
         this.atilmaTarihi = atilmaTarihi;
     }
 

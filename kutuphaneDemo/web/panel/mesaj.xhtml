@@ -7,54 +7,53 @@
         <title>Mesaj Islemleri</title>
     </h:head>
     <h:body>
-                <h:form>
-            Kategori= <h:inputText value = "#{kitapController.entity.kategori_id}" />
+
+        <h:form>
+
+            Mesaj Atan Kullanıcı=  <h:inputText value = "#{mesajController.entity.mesajAtanKisi_id}" />
             <br/>
-            Ad=  <h:inputText value = "#{kitapController.entity.ad}" />
-            <br/>
-            SayfaSayisi=  <h:inputText value = "#{kullaniciController.entity.soyad}" />
-            <br/>
-            Kitap Kapaği= <h:inputText value = "#{kullaniciController.entity.mail}" />
+            Mesaj=  <h:inputTextarea value = "#{mesajController.entity.mesaj}" />
             <br/>
 
-            <h:commandButton rendered = "#{kitapController.entity.kitap_id == 0}" action = "#{kitapController.create()}" value = "create"/>
-            <h:commandButton rendered = "#{kitapController.entity.kitap_id != 0}" action = "#{kitapController.update()}" value = "update"/>
+            Tarih=  <h:inputText  value="#{mesajController.entity.atilmaTarihi}"/>  
+
+
+ <!-- Atilma Tarihi= <h:inputText value = "#{mesajController.entity.atilmaTarihi}" />-->
+            <br/>
+
+            <h:commandButton rendered = "#{mesajController.entity.mesaj_id == 0}" action = "#{mesajController.create()}" value = "create"/>
+            <h:commandButton rendered = "#{mesajController.entity.mesaj_id != 0}" action = "#{mesajController.update()}" value = "update"/>
 
 
         </h:form>
         <hr />
         <h:form>
-            <h:dataTable value = "#{kitapController.list}" var = "k" border = "1">
+            <h:dataTable value = "#{mesajController.list}" var = "k" border = "1">
                 <h:column>
                     <f:facet name ="header" >ID</f:facet>
-                        #{k.kitap_id}
+                        #{k.mesaj_id}
                 </h:column>
                 <h:column>
-                    <f:facet name ="header" >Kategori</f:facet>
-                        #{k.kategori_id}
+                    <f:facet name ="header" >Mesaj Atan Kullanıcı</f:facet>
+                        #{k.mesajAtanKisi_id}
                 </h:column>
                 <h:column>
-                    <f:facet name ="header" >Ad</f:facet>
-                        #{k.ad}
-                </h:column>
-
-                <h:column>
-                    <f:facet name ="header" >Sayfa Sayısı</f:facet>
-                        #{k.sayfaSayisi}
+                    <f:facet name ="header" >Mesaj</f:facet>
+                        #{k.mesaj}
                 </h:column>
 
                 <h:column>
-                    <f:facet name ="header" >Kitap Kapaği</f:facet>
-                        #{k.kitapKapagi}
+                    <f:facet name ="header" >Atilma Tarihi</f:facet>
+                        #{k.atilmaTarihi}
                 </h:column>
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>
-                    <h:commandButton action = "#{kitapController.delete(k)}" value ="delete"/>
-                    <h:commandButton action = "#{kitapController.entityUpdate(k)}" value ="update"/>
+                    <h:commandButton action = "#{mesajController.delete(k)}" value ="delete"/>
+                    <h:commandButton action = "#{mesajController.entityUpdate(k)}" value ="update"/>
                 </h:column>
             </h:dataTable>
         </h:form>
-      
+
     </h:body>
 </html>
 

@@ -24,7 +24,8 @@ public class KitapOduncAlmaDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "insert into KitapOduncAlma(oduncAlanKisi_id,oduncAlınanKitap_id,iadeTarihi)values('" + odunc.getOduncAlanKisi_id() + "','" + odunc.getOduncAlınanKitap_id() + "','" + odunc.getIadeTarihi()+ "')";
+            String query = "insert into KitapOduncAlma(oduncAlanKisi_id,oduncAlinanKitap_id,iadeTarihi,oduncAlmaTarihi)values('" + odunc.getOduncAlanKisi_id() + "','" + odunc.getOduncAlinanKitap_id() + "','" + odunc.getIadeTarihi() + "','" + odunc.getOduncAlmaTarihi() + "')";
+
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -36,7 +37,7 @@ public class KitapOduncAlmaDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
 
-            String query = "update kitapOduncAlma set oduncAlanKisi_id='" + odunc.getOduncAlanKisi_id() + ",oduncAlınanKitap_id='" + odunc.getOduncAlınanKitap_id() + "',iadeTarihi='" + odunc.getIadeTarihi() + "'where oduncAlma_id=" + odunc.getOduncAlma_id();
+            String query = "update kitapOduncAlma set oduncAlanKisi_id='" + odunc.getOduncAlanKisi_id() + ",oduncAlinanKitap_id='" + odunc.getOduncAlinanKitap_id() + "',iadeTarihi='" + odunc.getIadeTarihi() + "',oduncAlmaTarihi='" + odunc.getOduncAlmaTarihi() + "' where oduncAlma_id=" + odunc.getOduncAlma_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -65,7 +66,7 @@ public class KitapOduncAlmaDAO extends DBConnection {
             String query = "Select * from kitapOduncAlma";
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                oduncList.add(new KitapOduncAlma(rs.getInt("oduncAlma_id "), rs.getInt("oduncAlanKisi_id"), rs.getInt("oduncAlınanKitap_id"),rs.getTimestamp("iadeTarihi"), rs.getTimestamp("oduncAlmaTarihi")));
+                oduncList.add(new KitapOduncAlma(rs.getInt("oduncalma_id"), rs.getInt("oduncalankisi_id"), rs.getInt("oduncalinankitap_id"), rs.getString("iadetarihi"), rs.getString("oduncalmatarihi")));
             }
 
         } catch (Exception ex) {
@@ -73,17 +74,18 @@ public class KitapOduncAlmaDAO extends DBConnection {
         }
         return oduncList;
     }
-    public KitapOduncAlma findById(int id){
+
+    public KitapOduncAlma findById(int id) {
         KitapOduncAlma c = null;
         try {
             Statement st = this.connect().createStatement();
-            String query = "select * from kitapOduncAlma where oducanAlma_id="+id;
-            
+            String query = "select * from kitapOduncAlma where oducanAlma_id=" + id;
+
             ResultSet rs = st.executeQuery(query);
-            while(rs.next()){
-                c = new KitapOduncAlma(rs.getInt("oduncAlma_id "), rs.getInt("oduncAlanKisi_id"), rs.getInt("oduncAlınanKitap_id"),rs.getTimestamp("iadeTarihi"), rs.getTimestamp("oduncAlmaTarihi"));
+            while (rs.next()) {
+                c = new KitapOduncAlma(rs.getInt("oduncalma_id"), rs.getInt("oduncalankisi_id"), rs.getInt("oduncalinankitap_id"), rs.getString("iadetarihi"), rs.getString("oduncalmatarihi"));
             }
-            
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

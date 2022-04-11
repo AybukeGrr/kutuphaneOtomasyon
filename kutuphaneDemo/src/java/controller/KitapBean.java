@@ -26,11 +26,11 @@ public class KitapBean implements Serializable {
     public KitapBean() {
     }
 
-    public String getTitle(int id){
+    public String getTitle(int id) {
         Kitap c = this.getDao().findById(id);
         return null;
     }
-    
+
     public void create() {
         this.getDao().create(entity);
         entity = new Kitap();
@@ -40,7 +40,8 @@ public class KitapBean implements Serializable {
         this.getDao().delete(kitap);
         entity = new Kitap();
     }
-        public void entityUpdate(Kitap k) {
+
+    public void entityUpdate(Kitap k) {
         this.entity = k;
     }
 
