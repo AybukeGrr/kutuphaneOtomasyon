@@ -8,7 +8,7 @@
     </h:head>
     <h:body>
         <h:form>
-            Kategori= <h:inputText value = "#{kitapController.entity.kategori_id}" />
+            Kategori= <h:inputText value = "#{kitapController.entity.kategori}" converter="kategoriConverter"/>
             <br/>
             Ad=  <h:inputText value = "#{kitapController.entity.ad}" />
             <br/>
@@ -16,6 +16,7 @@
             <br/>
             Kitap Kapaği= <h:inputText value = "#{kitapController.entity.kitapKapagi}" />
             <br/>
+            Kitap Yazari= <h:inputText value = "#{kitapController.entity.yazarlar}" />
 
             <h:commandButton rendered = "#{kitapController.entity.kitap_id == 0}" action = "#{kitapController.create()}" value = "create"/>
             <h:commandButton rendered = "#{kitapController.entity.kitap_id != 0}" action = "#{kitapController.update()}" value = "update"/>
@@ -48,6 +49,11 @@
                 <h:column>
                     <f:facet name ="header" >Kitap Kapaği</f:facet>
                         #{k.kitapKapagi}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name ="header" >Kitap Yazari</f:facet>
+                        #{k.yazarlar}
                 </h:column>
                 <h:column>
                     <f:facet name ="header" >Administration</f:facet>

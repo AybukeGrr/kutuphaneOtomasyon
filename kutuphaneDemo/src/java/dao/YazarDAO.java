@@ -21,7 +21,7 @@ public class YazarDAO extends DBConnection {
 
     public void create(Yazar yazar) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
             String query = "insert into yazarlar(ad,soyad)values('" + yazar.getAd() + "','" + yazar.getSoyad() + "')";
             st.executeUpdate(query);
@@ -33,7 +33,7 @@ public class YazarDAO extends DBConnection {
 
     public void update(Yazar yazar) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
             String query = "update yazarlar set ad='" + yazar.getAd() + "',soyad='" + yazar.getSoyad() + "' where yazar_id=" + yazar.getYazar_id();
             st.executeUpdate(query);
@@ -46,7 +46,7 @@ public class YazarDAO extends DBConnection {
 
     public void delete(Yazar yazar) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
             String query = "delete from yazarlar where yazar_id=" + yazar.getYazar_id();
             st.executeUpdate(query);
@@ -60,7 +60,7 @@ public class YazarDAO extends DBConnection {
         List<Yazar> yazarList = new ArrayList<>();
 
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
             String query = "Select * from yazarlar";
             ResultSet rs = st.executeQuery(query);
@@ -76,7 +76,7 @@ public class YazarDAO extends DBConnection {
     public Yazar findById(int id){
         Yazar c = null;
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "select * from yazarlar where yazar_id="+id;
             
             ResultSet rs = st.executeQuery(query);

@@ -21,7 +21,7 @@ public class KategoriDAO extends DBConnection {
 
     public void create(Kategori kategori) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
             String query = "insert into kategoriler(ad)values('" + kategori.getAd() + "')";
             st.executeUpdate(query);
@@ -33,9 +33,9 @@ public class KategoriDAO extends DBConnection {
 
     public void update(Kategori kategori) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
-            String query = "update kategoriler set ad='" + kategori.getAd() + "' where kategori_id=" + kategori.getKategori_id();
+            String query = "update kategoriler set ad='" + kategori.getAd() + "' where id="+kategori.getKategori_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -45,9 +45,9 @@ public class KategoriDAO extends DBConnection {
 
     public void delete(Kategori kategori) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
-            String query = "delete from kategoriler where kategori_id=" + kategori.getKategori_id();
+            String query = "delete from kategoriler where id=" + kategori.getKategori_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -59,12 +59,13 @@ public class KategoriDAO extends DBConnection {
         List<Kategori> kategoriList = new ArrayList<>();
 
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
             String query = "Select * from kategoriler";
             ResultSet rs = st.executeQuery(query);
+
             while (rs.next()) {
-                kategoriList.add(new Kategori(rs.getInt("kategori_id"), rs.getString("ad")));
+                kategoriList.add(new Kategori(rs.getInt("id"), rs.getString("ad")));
             }
 
         } catch (Exception ex) {
@@ -72,18 +73,17 @@ public class KategoriDAO extends DBConnection {
         }
         return kategoriList;
     }
-
-    public Kategori findById(int id) {
+        public Kategori findById(int id){
         Kategori c = null;
         try {
-            Statement st = this.connect().createStatement();
-            String query = "select * from kategoriler where kategori_id=" + id;
-
+            Statement st = this.getConnection().createStatement();
+            String query = "select * from kategoriler where id="+id;
+            
             ResultSet rs = st.executeQuery(query);
-            while (rs.next()) {
-                c = new Kategori(rs.getInt("kategori_id"), rs.getString("ad"));
+            while(rs.next()){
+                c = new Kategori(rs.getInt("id"), rs.getString("ad"));
             }
-
+            
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

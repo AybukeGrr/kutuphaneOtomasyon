@@ -8,9 +8,9 @@
     </h:head>
     <h:body>
         <h:form>
-            Odunc Alan Kisi ID= <h:inputText value = "#{kitapOduncAlmaController.entity.oduncAlanKisi_id}" />
+            Odunc Alan Kisi ID= <h:inputText value = "#{kitapOduncAlmaController.entity.kullanici}" converter="mesajConverter" />
             <br/>
-            Odunc Alınan Kitap ID= <h:inputText value = "#{kitapOduncAlmaController.entity.oduncAlinanKitap_id}" />
+            Odunc Alınan Kitap ID= <h:inputText value = "#{kitapOduncAlmaController.entity.kitap}" converter="oduncAlmaConverter" />
             <br/>
             Odunc Alma Tarihi= <h:inputText value = "#{kitapOduncAlmaController.entity.oduncAlmaTarihi}" />
             <br/>
@@ -30,11 +30,11 @@
                 </h:column>
                 <h:column>
                     <f:facet name ="header" >Odunc Alan Kisi ID</f:facet>
-                        #{k.oduncAlanKisi_id}
+                        #{k.kullanici}
                 </h:column>
                 <h:column>
                     <f:facet name ="header" >Odunc Alınan Kitap ID</f:facet>
-                        #{k.oduncAlinanKitap_id}
+                        #{k.kitap}
                 </h:column>
                 <h:column>
                     <f:facet name ="header" >Odunc Alma Tarihi</f:facet>

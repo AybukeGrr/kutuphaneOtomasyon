@@ -14,16 +14,16 @@ public class Mesaj {
 
     private int mesaj_id;
     private String mesaj;
-    private int mesajAtanKisi_id;
+    private Kullanici kullanici;
     private String atilmaTarihi;
 
     public Mesaj() {
     }
 
-    public Mesaj(int mesaj_id, String mesaj, int mesajAtanKisi_id, String atilmaTarihi) {
+    public Mesaj(int mesaj_id, String mesaj, Kullanici kullanici, String atilmaTarihi) {
         this.mesaj_id = mesaj_id;
         this.mesaj = mesaj;
-        this.mesajAtanKisi_id = mesajAtanKisi_id;
+        this.kullanici = kullanici;
         this.atilmaTarihi = atilmaTarihi;
     }
 
@@ -43,20 +43,20 @@ public class Mesaj {
         this.mesaj = mesaj;
     }
 
-    public int getMesajAtanKisi_id() {
-        return mesajAtanKisi_id;
-    }
-
-    public void setMesajAtanKisi_id(int mesajAtanKisi_id) {
-        this.mesajAtanKisi_id = mesajAtanKisi_id;
-    }
-
     public String getAtilmaTarihi() {
         return atilmaTarihi;
     }
 
     public void setAtilmaTarihi(String atilmaTarihi) {
         this.atilmaTarihi = atilmaTarihi;
+    }
+
+    public Kullanici getKullanici() {
+        return kullanici;
+    }
+
+    public void setKullanici(Kullanici kullanici) {
+        this.kullanici = kullanici;
     }
 
 }

@@ -10,7 +10,7 @@
 
         <h:form>
 
-            Mesaj Atan Kullanıcı=  <h:inputText value = "#{mesajController.entity.mesajAtanKisi_id}" />
+            Mesaj Atan Kullanıcı=  <h:inputText value = "#{mesajController.entity.kullanici}" converter="mesajConverter" />
             <br/>
             Mesaj=  <h:inputTextarea value = "#{mesajController.entity.mesaj}" />
             <br/>
@@ -35,7 +35,7 @@
                 </h:column>
                 <h:column>
                     <f:facet name ="header" >Mesaj Atan Kullanıcı</f:facet>
-                        #{k.mesajAtanKisi_id}
+                        #{k.kullanici}
                 </h:column>
                 <h:column>
                     <f:facet name ="header" >Mesaj</f:facet>

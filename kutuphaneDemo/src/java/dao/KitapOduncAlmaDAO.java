@@ -4,7 +4,9 @@
  */
 package dao;
 
+import entity.Kitap;
 import entity.KitapOduncAlma;
+import entity.Kullanici;
 import util.DBConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,11 +22,14 @@ import java.sql.Timestamp;
  */
 public class KitapOduncAlmaDAO extends DBConnection {
 
+    private KullaniciDAO kullaniciDao;
+    private KitapDAO kitapDao;
+
     public void create(KitapOduncAlma odunc) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
-            String query = "insert into KitapOduncAlma(oduncAlanKisi_id,oduncAlinanKitap_id,iadeTarihi,oduncAlmaTarihi)values('" + odunc.getOduncAlanKisi_id() + "','" + odunc.getOduncAlinanKitap_id() + "','" + odunc.getIadeTarihi() + "','" + odunc.getOduncAlmaTarihi() + "')";
+            String query = "insert into KitapOduncAlma(oduncAlanKisi_id,oduncAlinanKitap_id,iadeTarihi,oduncAlmaTarihi)values('" + odunc.getKullanici().getKullanici_id() + "','" + odunc.getKitap().getKitap_id() + "','" + odunc.getIadeTarihi() + "','" + odunc.getOduncAlmaTarihi() + "')";
 
             st.executeUpdate(query);
 
@@ -35,9 +40,9 @@ public class KitapOduncAlmaDAO extends DBConnection {
 
     public void update(KitapOduncAlma odunc) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
-            String query = "update kitapOduncAlma set oduncAlanKisi_id='" + odunc.getOduncAlanKisi_id() + ",oduncAlinanKitap_id='" + odunc.getOduncAlinanKitap_id() + "',iadeTarihi='" + odunc.getIadeTarihi() + "',oduncAlmaTarihi='" + odunc.getOduncAlmaTarihi() + "' where oduncAlma_id=" + odunc.getOduncAlma_id();
+            String query = "update kitapOduncAlma set oduncAlanKisi_id='" + odunc.getKullanici().getKullanici_id() + ",oduncAlinanKitap_id='" + odunc.getKitap().getKitap_id() + "',iadeTarihi='" + odunc.getIadeTarihi() + "',oduncAlmaTarihi='" + odunc.getOduncAlmaTarihi() + "' where oduncAlma_id=" + odunc.getOduncAlma_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -47,7 +52,7 @@ public class KitapOduncAlmaDAO extends DBConnection {
 
     public void delete(KitapOduncAlma odunc) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
             String query = "delete from kitapOduncAlma where oducanAlma_id=" + odunc.getOduncAlma_id();
             st.executeUpdate(query);
@@ -61,12 +66,16 @@ public class KitapOduncAlmaDAO extends DBConnection {
         List<KitapOduncAlma> oduncList = new ArrayList<>();
 
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
             String query = "Select * from kitapOduncAlma";
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                oduncList.add(new KitapOduncAlma(rs.getInt("oduncalma_id"), rs.getInt("oduncalankisi_id"), rs.getInt("oduncalinankitap_id"), rs.getString("iadetarihi"), rs.getString("oduncalmatarihi")));
+
+                Kullanici k = this.getKullaniciDao().findById(rs.getInt("oduncalankisi_id"));
+                Kitap ktp = this.getKitapDao().findById(rs.getInt("oduncalinankitap_id"));
+
+                oduncList.add(new KitapOduncAlma(rs.getInt("oduncalma_id"), k, ktp, rs.getString("iadetarihi"), rs.getString("oduncalmatarihi")));
             }
 
         } catch (Exception ex) {
@@ -78,12 +87,16 @@ public class KitapOduncAlmaDAO extends DBConnection {
     public KitapOduncAlma findById(int id) {
         KitapOduncAlma c = null;
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "select * from kitapOduncAlma where oducanAlma_id=" + id;
 
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                c = new KitapOduncAlma(rs.getInt("oduncalma_id"), rs.getInt("oduncalankisi_id"), rs.getInt("oduncalinankitap_id"), rs.getString("iadetarihi"), rs.getString("oduncalmatarihi"));
+
+                Kullanici k = this.getKullaniciDao().findById(rs.getInt("oduncalankisi_id"));
+                Kitap ktp = this.getKitapDao().findById(rs.getInt("oduncalinankitap_id"));
+
+                c = new KitapOduncAlma(rs.getInt("oduncalma_id"), k, ktp, rs.getString("iadetarihi"), rs.getString("oduncalmatarihi"));
             }
 
         } catch (Exception e) {
@@ -91,4 +104,27 @@ public class KitapOduncAlmaDAO extends DBConnection {
         }
         return c;
     }
+
+    public KullaniciDAO getKullaniciDao() {
+        if(kullaniciDao == null){
+            this.kullaniciDao = new KullaniciDAO();
+        }
+        return kullaniciDao;
+    }
+
+    public void setKullaniciDao(KullaniciDAO kullaniciDao) {
+        this.kullaniciDao = kullaniciDao;
+    }
+
+    public KitapDAO getKitapDao() {
+        if(kitapDao == null){
+            this.kitapDao = new KitapDAO();
+        }
+        return kitapDao;
+    }
+
+    public void setKitapDao(KitapDAO kitapDao) {
+        this.kitapDao = kitapDao;
+    }
+
 }

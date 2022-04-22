@@ -9,20 +9,18 @@ package entity;
  * @author Sevda
  *
  */
- 
-
 public class KitapOduncAlma {
 
     private int oduncAlma_id;
-    private int oduncAlanKisi_id;
-    private int oduncAlinanKitap_id;
+    private Kullanici kullanici;
+    private Kitap kitap;
     private String iadeTarihi;
     private String oduncAlmaTarihi;
 
-    public KitapOduncAlma(int oduncAlma_id, int oduncAlanKisi_id, int oduncAlinanKitap_id, String iadeTarihi, String oduncAlmaTarihi) {
+    public KitapOduncAlma(int oduncAlma_id, Kullanici kullanici, Kitap kitap, String iadeTarihi, String oduncAlmaTarihi) {
         this.oduncAlma_id = oduncAlma_id;
-        this.oduncAlanKisi_id = oduncAlanKisi_id;
-        this.oduncAlinanKitap_id = oduncAlinanKitap_id;
+        this.kullanici = kullanici;
+        this.kitap = kitap;
         this.iadeTarihi = iadeTarihi;
         this.oduncAlmaTarihi = oduncAlmaTarihi;
     }
@@ -38,20 +36,20 @@ public class KitapOduncAlma {
         this.oduncAlma_id = oduncAlma_id;
     }
 
-    public int getOduncAlanKisi_id() {
-        return oduncAlanKisi_id;
+    public Kullanici getKullanici() {
+        return kullanici;
     }
 
-    public void setOduncAlanKisi_id(int oduncAlanKisi_id) {
-        this.oduncAlanKisi_id = oduncAlanKisi_id;
+    public void setKullanici(Kullanici kullanici) {
+        this.kullanici = kullanici;
     }
 
-    public int getOduncAlinanKitap_id() {
-        return oduncAlinanKitap_id;
+    public Kitap getKitap() {
+        return kitap;
     }
 
-    public void setOduncAlinanKitap_id(int oduncAlinanKitap_id) {
-        this.oduncAlinanKitap_id = oduncAlinanKitap_id;
+    public void setKitap(Kitap kitap) {
+        this.kitap = kitap;
     }
 
     public String getIadeTarihi() {
@@ -69,7 +67,5 @@ public class KitapOduncAlma {
     public void setOduncAlmaTarihi(String oduncAlmaTarihi) {
         this.oduncAlmaTarihi = oduncAlmaTarihi;
     }
-    
-    
 
 }

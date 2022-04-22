@@ -19,7 +19,7 @@ public class KullaniciDAO extends DBConnection {
 
     public void create(Kullanici kullanici) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
             String query = "insert into kullanicilar(ad,soyad,mail,sifre)values('" + kullanici.getAd() + "','" + kullanici.getSoyad() + "','" + kullanici.getMail() + "','" + kullanici.getSifre() + "')";
             st.executeUpdate(query);
@@ -31,7 +31,7 @@ public class KullaniciDAO extends DBConnection {
 
     public void update(Kullanici kullanici) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
             String query = "update kullanicilar set ad='" + kullanici.getAd() + "',soyad='" + kullanici.getSoyad() + "',sifre='" + kullanici.getSifre() + "',mail='" + kullanici.getMail() + "' where kullanici_id=" + kullanici.getKullanici_id();
             st.executeUpdate(query);
@@ -43,7 +43,7 @@ public class KullaniciDAO extends DBConnection {
 
     public void delete(Kullanici kullanici) {
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
             String query = "delete from kullanicilar where kullanici_id=" + kullanici.getKullanici_id();
             st.executeUpdate(query);
@@ -58,7 +58,7 @@ public class KullaniciDAO extends DBConnection {
         List<Kullanici> kullaniciList = new ArrayList<>();
 
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
 
             String query = "Select * from kullanicilar";
             ResultSet rs = st.executeQuery(query);
@@ -75,7 +75,7 @@ public class KullaniciDAO extends DBConnection {
     public Kullanici findById(int id) {
         Kullanici c = null;
         try {
-            Statement st = this.connect().createStatement();
+            Statement st = this.getConnection().createStatement();
             String query = "select * from kullanicilar where kullanici_id=" + id;
 
             ResultSet rs = st.executeQuery(query);

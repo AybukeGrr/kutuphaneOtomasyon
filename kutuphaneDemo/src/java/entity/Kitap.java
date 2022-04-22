@@ -4,6 +4,8 @@
  */
 package entity;
 
+import java.util.List;
+
 /**
  *
  * @author Sevda
@@ -13,18 +15,29 @@ public class Kitap {
     private int kitap_id;
     private String ad;
     private int sayfaSayisi;
-    private int kategori_id;
+    private Kategori kategori;
     private String kitapKapagi;
 
-    public Kitap(int kitap_id, String ad, int sayfaSayisi, int kategori_id, String kitapKapagi) {
+    private List<Yazar> yazarlar;
+
+    public Kitap(int kitap_id, String ad, int sayfaSayisi, Kategori kategori, String kitapKapagi, List<Yazar> yazarlar) {
         this.kitap_id = kitap_id;
         this.ad = ad;
         this.sayfaSayisi = sayfaSayisi;
-        this.kategori_id = kategori_id;
+        this.kategori = kategori;
         this.kitapKapagi = kitapKapagi;
+        this.yazarlar = yazarlar;
     }
 
     public Kitap() {
+    }
+
+    public List<Yazar> getYazarlar() {
+        return yazarlar;
+    }
+
+    public void setYazarlar(List<Yazar> yazarlar) {
+        this.yazarlar = yazarlar;
     }
 
     public int getKitap_id() {
@@ -51,12 +64,12 @@ public class Kitap {
         this.sayfaSayisi = sayfaSayisi;
     }
 
-    public int getKategori_id() {
-        return kategori_id;
+    public Kategori getKategori() {
+        return kategori;
     }
 
-    public void setKategori_id(int kategori_id) {
-        this.kategori_id = kategori_id;
+    public void setKategori(Kategori kategori) {
+        this.kategori = kategori;
     }
 
     public String getKitapKapagi() {
@@ -66,4 +79,27 @@ public class Kitap {
     public void setKitapKapagi(String kitapKapagi) {
         this.kitapKapagi = kitapKapagi;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 73 * hash + this.kitap_id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Kitap other = (Kitap) obj;
+        return this.kitap_id == other.kitap_id;
+    }
+
 }

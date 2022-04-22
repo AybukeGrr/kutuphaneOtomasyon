@@ -66,4 +66,28 @@ public class Kullanici {
 
     public Kullanici() {
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 11 * hash + this.kullanici_id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Kullanici other = (Kullanici) obj;
+        return this.kullanici_id == other.kullanici_id;
+    }
+    
+    
 }

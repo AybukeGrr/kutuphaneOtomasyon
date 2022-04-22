@@ -4,8 +4,6 @@
  */
 package entity;
 
-import java.security.Timestamp;
-
 /**
  *
  * @author Sevda
@@ -40,13 +38,25 @@ public class Kategori {
     }
 
     @Override
-    public String toString() {
-        return "Kategori{" + "kategori_id=" + kategori_id + ", ad=" + ad + '}';
+    public int hashCode() {
+        int hash = 5;
+        hash = 37 * hash + this.kategori_id;
+        return hash;
     }
 
-    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Kategori other = (Kategori) obj;
+        return this.kategori_id == other.kategori_id;
+    }
 
-    
-    
-    
 }
