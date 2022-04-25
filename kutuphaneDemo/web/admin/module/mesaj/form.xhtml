@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-warning">
+                <h4 class="card-title">Mesaj Ekle</h4>
+                <p class="card-category">Mesajlari Ekleme veya Güncelleme</p>
+            </div>
+            <div class="card-body">
+                <h:form id="mesaj-form">
+                    <h:inputHidden value="#{mesajController.entity.mesaj_id}"/>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Mesaj Atan Kullanıcı </label>
+                                <h:inputText styleClass="form-control"  value = "#{mesajController.entity.kullanici}" converter="mesajConverter" >
+
+                                </h:inputText>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Mesaj</label>
+                                <h:inputTextarea  styleClass="form-control"  value = "#{mesajController.entity.mesaj}" />
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Mesaj Tarihi</label>
+                                <h:inputText  styleClass="form-control"  value="#{mesajController.entity.atilmaTarihi}">
+
+                                </h:inputText>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Mesaj Atilma Tarihi</label>
+                                <h:inputText styleClass="form-control"   value = "#{mesajController.entity.atilmaTarihi}" >
+
+                                </h:inputText>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h:commandButton rendered="#{mesajController.entity.mesaj_id!=0}"  styleClass="btn btn-danger pull-left" value="Temizle"  action="#{mesajController.clear()}">
+                        <f:ajax execute="mesaj-form" render="mesaj-form mesaj-table"/>
+                    </h:commandButton>
+                    <h:commandButton rendered="#{mesajController.entity.mesaj_id!=0}"  styleClass="btn btn-info pull-right" value="Güncelle"  action="#{mesajController.update()}">
+                        <f:ajax execute="mesaj-form" render="mesaj-form mesaj-table"/>
+                    </h:commandButton>
+                    <h:commandButton rendered="#{mesajController.entity.mesaj_id==0}" styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{mesajController.create()}" >
+                        <f:ajax execute="mesaj-form" render="mesaj-form mesaj-table"/>
+                    </h:commandButton>
+
+                    <div class="clearfix"></div>
+                </h:form>
+            </div>
+        </div>
+    </div>
+</ui:composition>

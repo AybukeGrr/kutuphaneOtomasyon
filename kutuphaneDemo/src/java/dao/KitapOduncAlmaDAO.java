@@ -79,7 +79,7 @@ public class KitapOduncAlmaDAO extends DBConnection {
             }
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Ödünç Alma"+ex.getMessage());
         }
         return oduncList;
     }

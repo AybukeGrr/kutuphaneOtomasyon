@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <meta charset="utf-8" />
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>
+            Kütüphane Otomasyonu
+        </title>
+
+        <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+        <!--     Fonts and icons     -->
+        <h:outputStylesheet library="css" name="robotofonts.css" />
+        <h:outputStylesheet library="css" name="fontawesome.css" />
+        <!-- CSS dosyaları -->
+        <h:outputStylesheet library="css" name="material-dashboard.css" />
+    </h:head>
+
+    <h:body>
+        <div class="wrapper ">
+            <div class="sidebar" data-color="purple" data-background-color="white" library="img" data-image="img/sidebar-1.jpg">
+                <div class="logo text-center text-success">
+                    <a href="/kutuphaneDemo/admin/index.xhtml" class="simple-text logo-normal">Kütüphane Otomasyonu</a>
+                    <p class="8">
+                        <hr/>
+                        Hoş Geldiniz<br/>
+                    </p>
+                </div>
+                <div class="sidebar-wrapper">
+                    <h:form>
+                        <ul class="nav"> 
+                            <li class="nav-item active ">
+                                <h:commandLink styleClass="nav-link" action="#{navigationBean.page('kullanici')}">
+                                    <i class="material-icons">person</i>
+                                    <p>Kullanıcılar</p>
+                                </h:commandLink>
+                            </li>
+                            <li class="nav-item active ">
+                                <h:commandLink styleClass="nav-link" action="#{navigationBean.page('kitap')}">
+
+                                    <i class="material-icons">book</i>
+                                    <p>Kitaplar</p>
+                                </h:commandLink>
+                            </li>
+                            <li class="nav-item active ">
+                                <h:commandLink styleClass="nav-link" action="#{navigationBean.page('oduncIslemleri')}">
+
+                                    <i class="material-icons">settings</i>
+                                    <p>Ödünç İşlemleri</p>
+                                </h:commandLink>
+                            </li>
+                            <li class="nav-item active ">
+                                <h:commandLink styleClass="nav-link" action="#{navigationBean.page('kategori')}">
+
+                                    <i class="material-icons">category</i>
+                                    <p>Kategoriler</p>
+                                </h:commandLink>
+                            </li>
+                            <li class="nav-item active ">
+                                <h:commandLink styleClass="nav-link" action="#{navigationBean.page('yazar')}">
+
+                                    <i class="material-icons">person</i>
+                                    <p>Yazarlar</p>
+                                </h:commandLink>
+                            </li>
+                            <li class="nav-item active ">
+                                <h:commandLink styleClass="nav-link" action="#{navigationBean.page('mesaj')}">
+
+                                    <i class="material-icons">message</i>
+                                    <p>Mesajlar</p>
+                                </h:commandLink>
+                            </li>
+                        </ul>
+                    </h:form>
+                </div>
+            </div>
+            <div class="main-panel">
+                <ui:insert name="header">
+                    <ui:include src="/admin/template/include/header.xhtml"/>
+                </ui:insert>
+                <ui:insert name="content">
+                    defaulth content
+                </ui:insert>
+                <ui:insert name="footer">
+                    <ui:include src="/admin/template/include/footer.xhtml"/>
+                </ui:insert>
+            </div>
+        </div>
+        <!--   Core JS Files   -->
+
+        <script src="../resources/js/core/jquery.min.js"></script>
+        <script src="../resources/js/core/popper.min.js"></script>
+        <script src="../resources/js/core/bootstrap-material-design.min.js"></script>
+        <script src="../resources/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+        <!-- Plugin for the momentJs  -->
+        <script src="../resources/js/plugins/moment.min.js"></script>
+        <!--  Plugin for Sweet Alert -->
+        <script src="../resources/js/plugins/sweetalert2.js"></script>
+        <!-- Forms Validations Plugin -->
+        <script src="../resources/js/plugins/jquery.validate.min.js"></script>
+        <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+        <script src="../resources/js/plugins/jquery.bootstrap-wizard.js"></script>
+        <!--    Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+        <script src="../resources/js/plugins/bootstrap-selectpicker.js"></script>
+        <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+        <script src="../resources/js/plugins/bootstrap-datetimepicker.min.js"></script>
+        <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+        <script src="../resources/js/plugins/jquery.dataTables.min.js"></script>
+        <!--    Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+        <script src="../resources/js/plugins/bootstrap-tagsinput.js"></script>
+        <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+        <script src="../resources/js/plugins/jasny-bootstrap.min.js"></script>
+        <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+        <script src="../resources/js/plugins/fullcalendar.min.js"></script>
+        <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+        <script src="../resources/js/plugins/jquery-jvectormap.js"></script>
+        <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+        <script src="../resources/js/plugins/nouislider.min.js"></script>
+        <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+        <!-- Library for adding dinamically elements -->
+        <script src="../resources/js/plugins/arrive.min.js"></script>
+        <!--  Google Maps Plugin    -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+        <!-- Chartist JS -->
+        <script src="../resources/js/plugins/chartist.min.js"></script>
+        <!--  Notifications Plugin    -->
+        <script src="../resources/js/plugins/bootstrap-notify.js"></script>
+        <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+        <script src="../resources/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+        <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+        <script src="../resources/demo/demo.js"></script>
+
+
+
+
+
+    </h:body>
+
+</html>
+

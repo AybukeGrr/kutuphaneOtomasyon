@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-warning">
+                <h4 class="card-title d#{$infix}-inline-flex ">Kitaplar Tablosu</h4>
+                <p class="card-category"> Burası Kitap Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
+            </div> 
+            <h:form id="kitap-table">
+                <h:dataTable class="table" value="#{kitapController.list}" var="kitap">
+
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
+                            #{kitap.kitap_id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Kategori</b></f:facet> 
+                            #{kitap.kategori_id}  
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Kitap Adi</b></f:facet> 
+                            #{kitap.ad} 
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Sayfa Sayısı</b></f:facet> 
+                            #{kitap.sayfaSayisi} 
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Kitap Kapağı</b></f:facet> 
+                            #{kitap.kitapKapagi} 
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header"><b class="text-primary">Kitap Yazarı</b></f:facet> 
+                            #{kitap.yazarlar} 
+                    </h:column>
+                    <h:column>
+
+                        <h:commandLink action="#{kitapController.entityUpdate(kitap)}">
+                            <h:outputText value="" /> <i class="material-icons text-success">edit</i>
+                            <f:ajax execute="@this" render="kitap-form"/>
+                        </h:commandLink>
+
+                    </h:column>
+                    <h:column>
+
+                        <h:commandLink action="#{kitapController.delete(kitap)}">
+                            <h:outputText value="" /> <i class="material-icons text-danger">close</i> 
+                            <f:ajax execute="@this" render="kitap-form kitap-table"/>
+                        </h:commandLink>
+
+                    </h:column>
+
+
+
+
+                </h:dataTable>
+
+            </h:form>
+        </div>
+    </div>
+</ui:composition>

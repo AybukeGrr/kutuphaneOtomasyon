@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-warning">
+                <h4 class="card-title">Kullanıcı Ekle</h4>
+                <p class="card-category">Kullanıcılara Ekleme veya Güncellme</p>
+            </div>
+            <div class="card-body">
+                <h:form id="kullanici-form">
+                    <h:inputHidden value="#{kullaniciController.entity.kullanici_id}"/>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Kullanıcı Adı</label>
+                                <h:inputText id="kullaniciAdi" styleClass="form-control"  value="#{kullaniciController.entity.ad}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Kullanıcı Soyadı</label>
+                                <h:inputText id="kullaniciSoyadı" styleClass="form-control"  value="#{kullaniciController.entity.soyad}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Kullanıcı Mail</label>
+                                <h:inputText id="kullaniciMail" styleClass="form-control"  value="#{kullaniciController.entity.mail}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Kullanıcı Şifresi</label>
+                                <h:inputText id="kullaniciSifresi" styleClass="form-control"  value="#{kullaniciController.entity.sifre}"/>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h:commandButton rendered="#{kullaniciController.entity.kullanici_id!=0}"  styleClass="btn btn-danger pull-left" value="Temizle"  action="#{kullaniciController.clear()}">
+                        <f:ajax execute="kullanici-form" render="kullanici-form kullanici-table"/>
+                    </h:commandButton>
+                    <h:commandButton rendered="#{kullaniciController.entity.kullanici_id!=0}"  styleClass="btn btn-info pull-right" value="Güncelle"  action="#{kullaniciController.update()}">
+                        <f:ajax execute="kullanici-form" render="kullanici-form kullanici-table"/>
+                    </h:commandButton>
+                    <h:commandButton rendered="#{kullaniciController.entity.kullanici_id==0}" styleClass="btn btn-success pull-right" value="Kayıt Ekle" action="#{kullaniciController.create()}" >
+                        <f:ajax execute="kullanici-form" render="kullanici-form kullanici-table"/>
+                    </h:commandButton>
+
+                    <div class="clearfix"></div>
+                </h:form>
+            </div>
+        </div>
+    </div>
+
+
+
+</ui:composition>

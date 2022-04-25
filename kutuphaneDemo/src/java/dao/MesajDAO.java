@@ -39,7 +39,7 @@ public class MesajDAO extends DBConnection {
         try {
             Statement st = this.getConnection().createStatement();
 
-            String query = "update mesajlar set mesajAtanKisi_id='" + mesaj.getKullanici().getKullanici_id() + ",mesaj='" + mesaj.getMesaj() + "',atilmaTarihi='" + mesaj.getAtilmaTarihi() + "' where mesaj_id=" + mesaj.getMesaj_id();
+            String query = "update mesajlar set mesajAtanKisi_id='" + mesaj.getKullanici().getKullanici_id() + "',mesaj='" + mesaj.getMesaj() + "',atilmaTarihi='" + mesaj.getAtilmaTarihi() + "' where mesaj_id=" + mesaj.getMesaj_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
