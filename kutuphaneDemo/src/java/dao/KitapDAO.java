@@ -27,7 +27,7 @@ public class KitapDAO extends DBConnection {
         try {
             Statement st = this.getConnection().createStatement();
 
-            String query = "insert into kitaplar(kategori_id,ad,sayfaSayisi,kitapKapagi)values('" + kitap.getKategori().getKategori_id() + "','" + kitap.getAd() + "','" + kitap.getSayfaSayisi() + "','" + kitap.getKitapKapagi() + "')";
+            String query = "insert into kitaplar(kategori_id,ad,sayfaSayisi,kitapKapagi,yazar_id)values('" + kitap.getKategori().getKategori_id() + "','" + kitap.getAd() + "','" + kitap.getSayfaSayisi() + "','" + kitap.getKitapKapagi() + "','" + kitap.getYazarlar()+ "')";
             st.executeUpdate(query);
 
             ResultSet rs = st.executeQuery("select max(kitap_id) as mid from kitaplar");

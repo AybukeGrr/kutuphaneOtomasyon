@@ -17,7 +17,6 @@ public class Kitap {
     private int sayfaSayisi;
     private Kategori kategori;
     private String kitapKapagi;
-
     private List<Yazar> yazarlar;
 
     public Kitap(int kitap_id, String ad, int sayfaSayisi, Kategori kategori, String kitapKapagi, List<Yazar> yazarlar) {
