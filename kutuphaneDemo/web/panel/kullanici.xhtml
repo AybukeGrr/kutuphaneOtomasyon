@@ -8,13 +8,28 @@
     </h:head>
     <h:body>
         <h:form>
-            Ad=  <h:inputText value = "#{kullaniciController.entity.ad}" />
+            Ad=  <h:inputText id="name" value = "#{kullaniciController.entity.ad}" validatorMessage="Belirlenen aralıkta isim giriniz" > 
+                    <f:validateLength maximum="10" minimum="5"/>
+                 </h:inputText>
+                 <h:message for="name" style="color:red"/>
             <br/>
-            Soyad=  <h:inputText value = "#{kullaniciController.entity.soyad}" />
+            
+            Soyad=  <h:inputText id="surname" value = "#{kullaniciController.entity.soyad}" validatorMessage="Belirlenen aralıkta soyisim giriniz">
+                         <f:validateLength maximum="10" minimum="5"/>
+                    </h:inputText>
+                    <h:message for="surname" style="color:red"/>
             <br/>
-            Mail= <h:inputText value = "#{kullaniciController.entity.mail}" />
+            
+            Mail= <h:inputText id="mail" value = "#{kullaniciController.entity.mail}" validatorMessage="Geçersiz e-posta adresi">
+                <f:validateRegex pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"/>
+                  </h:inputText>
+                  <h:message for="mail" style="color:red"/>
             <br/>
-            Sifre = <h:inputSecret value = "#{kullaniciController.entity.sifre}" />
+            
+            Sifre = <h:inputSecret id="pasword" value = "#{kullaniciController.entity.sifre}" validatorMessage="Güçlü bir şifre giriniz" >
+                <f:validateLength maximum="20" minimum="8"/>
+                    </h:inputSecret>
+                    <h:message for="pasword" style="color:red"/>
 
             <h:commandButton rendered = "#{kullaniciController.entity.kullanici_id == 0}" action = "#{kullaniciController.create()}" value = "create"/>
             <h:commandButton rendered = "#{kullaniciController.entity.kullanici_id != 0}" action = "#{kullaniciController.update()}" value = "update"/>

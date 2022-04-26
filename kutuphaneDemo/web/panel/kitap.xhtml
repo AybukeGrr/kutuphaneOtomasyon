@@ -3,6 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    
     <h:head>
         <title>Kitap Islemleri</title>
     </h:head>
@@ -16,7 +18,8 @@
             <br/>
             Kitap Kapaği= <h:inputText value = "#{kitapController.entity.kitapKapagi}" />
             <br/>
-            Kitap Yazari= <h:inputText value = "#{kitapController.entity.yazarlar}" />
+            Kitap Yazari= <h:inputText value = "#{kitapController.entity.yazarlar}" converter="yazarConverter" /> 
+                                
 
             <h:commandButton rendered = "#{kitapController.entity.kitap_id == 0}" action = "#{kitapController.create()}" value = "create"/>
             <h:commandButton rendered = "#{kitapController.entity.kitap_id != 0}" action = "#{kitapController.update()}" value = "update"/>
@@ -33,7 +36,7 @@
                 
                 <h:column>
                     <f:facet name ="header" >Kategori</f:facet>
-                        #{k.kategori_id}
+                        #{k.kategori}
                 </h:column>
                 
                 <h:column>

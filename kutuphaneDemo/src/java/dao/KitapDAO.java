@@ -30,13 +30,13 @@ public class KitapDAO extends DBConnection {
             String query = "insert into kitaplar(kategori_id,ad,sayfaSayisi,kitapKapagi)values('" + kitap.getKategori().getKategori_id() + "','" + kitap.getAd() + "','" + kitap.getSayfaSayisi() + "','" + kitap.getKitapKapagi() + "')";
             st.executeUpdate(query);
 
-            ResultSet rs = st.executeQuery("select max(id) as mid from kitap");
+            ResultSet rs = st.executeQuery("select max(kitap_id) as mid from kitaplar");
             rs.next();
 
             int kitap_id = rs.getInt("mid");
 
             for (Yazar yazar : kitap.getYazarlar()) {
-                query = "insert into yazarlar_kitaplar (yazar_id,kitap_id) values (" + yazar.getYazar_id() + " , " + kitap_id + ")";
+                query = "insert into yazarlar_kitaplar (yazar_id,kitap_id) values ("+yazar.getYazar_id()+", "+kitap_id+")";
                 st.executeUpdate(query);
             }
 
@@ -87,9 +87,9 @@ public class KitapDAO extends DBConnection {
             String query = "Select * from kitaplar";
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-
+                
                 Kategori k = this.getKategoriDao().findById(rs.getInt("kategori_id"));
-                kitapList.add(new Kitap(rs.getInt("kitap_id"), rs.getString("ad"), rs.getInt("sayfaSayisi"), k, rs.getString("kitapKapagi"),this.getKitapYazar(rs.getInt("id"))));
+                kitapList.add(new Kitap(rs.getInt("kitap_id"), rs.getString("ad"), rs.getInt("sayfaSayisi"), k, rs.getString("kitapKapagi"),this.getKitapYazar(rs.getInt("kitap_id"))));
             }
 
         } catch (Exception ex) {
@@ -127,7 +127,7 @@ public class KitapDAO extends DBConnection {
 
                 Kategori k = this.getKategoriDao().findById(rs.getInt("kategori_id"));
 
-                c = new Kitap(rs.getInt("kitap_id"), rs.getString("ad"), rs.getInt("sayfaSayisi"), k, rs.getString("kitapKapagi"),this.getKitapYazar(rs.getInt("id")));
+                c = new Kitap(rs.getInt("kitap_id"), rs.getString("ad"), rs.getInt("sayfaSayisi"), k, rs.getString("kitapKapagi"),this.getKitapYazar(rs.getInt("kitap_id")));
             }
 
         } catch (Exception e) {
