@@ -4,7 +4,7 @@
  */
 package controller;
 
-import entity.Users;
+import entity.Kullanici;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
@@ -19,7 +19,7 @@ import java.io.Serializable;
 @Named(value="lc")
 @SessionScoped
 public class LoginController implements Serializable{
-     private Users user;
+     private Kullanici kullanici;
 
     public LoginController() {
         
@@ -27,21 +27,21 @@ public class LoginController implements Serializable{
     }
 
     public void login(){
-        if(user.getUsername().equals("test") && user.getPasword().equals("123")){ // bu durumda izin verilir yani oturuma eklenir.
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("validUser", user);
+        if(kullanici.getAd().equals("test") && kullanici.getSifre().equals("123")){ // bu durumda izin verilir yani oturuma eklenir.
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("validUser", kullanici);
         }else{ //bu durumda izin verilmez
             FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Username or Password is wrong!"));
         }
     }
 
-    public Users getUser() {
-          if(user==null){
-            this.user=new Users();
+    public Kullanici getKullanici() {
+          if(kullanici==null){
+            this.kullanici=new Kullanici();
         }
-        return user;
+        return kullanici;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setKullanici(Kullanici user) {
+        this.kullanici = user;
     }
 }

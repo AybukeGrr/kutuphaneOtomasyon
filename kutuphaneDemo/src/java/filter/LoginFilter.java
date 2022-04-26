@@ -4,7 +4,7 @@
  */
 package filter;
 
-import entity.Users;
+import entity.Kullanici;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -31,12 +31,12 @@ public class LoginFilter implements Filter {
         String url = request.getRequestURI();
         HttpSession session = request.getSession();
 
-        Users user = null;
+        Kullanici kullanici = null;
         if (session != null) { //session nesnesi null değil ise; validUser değişkeninin içerisindeki kullanıcı alınır.
-            user = (Users) session.getAttribute("validUser");
+            kullanici = (Kullanici) session.getAttribute("validUser");
         }
 
-        if (user == null) {//kullanıcı yok ise 
+        if (kullanici == null) {//kullanıcı yok ise 
             if (url.contains("logout")) {
                 response.sendRedirect(request.getContextPath() + "/panel/login.xhtml");
             } else {

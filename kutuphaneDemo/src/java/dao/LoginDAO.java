@@ -4,7 +4,7 @@
  */
 package dao;
 
-import entity.Users;
+import entity.Kullanici;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -16,16 +16,16 @@ import util.DBConnection;
  * @author 90553
  */
 public class LoginDAO extends DBConnection {
-   public Users findByID(int id) {
-        Users c = null;
+   public Kullanici findByID(int kullanici_id) {
+        Kullanici c = null;
         try {
             Statement st = this.getConnection().createStatement();
 
-            String query = "select * from users where id=" + id;
+            String query = "select * from kullanicilar where kullanici_id=" + kullanici_id;
 
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                c = (new Users(rs.getInt("id"), rs.getString("username"), rs.getString("paswords")));
+                c = (new Kullanici(rs.getInt("kullanici-id"), rs.getString("ad"), rs.getString("soyad"), rs.getString("sifre"), rs.getString("mail")));
 
             }
         } catch (Exception e) {
@@ -35,11 +35,11 @@ public class LoginDAO extends DBConnection {
 
     }
 
-    public void createUsers(Users c) {
+    public void createUsers(Kullanici c) {
         try {
             Statement st = this.getConnection().createStatement();
 
-            String query = "insert into users(username,pasword) values('" + c.getUsername() + "')";
+            String query = "insert into kullanicilar(ad,soyad,sifre,mail) values('" + c.getAd()+ "', '" + c.getSoyad()+ "', '" + c.getSifre()+ "', '" + c.getMail() + "')";
             int r = st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -48,11 +48,11 @@ public class LoginDAO extends DBConnection {
 
     }
 
-    public void delete(Users c) {
+    public void delete(Kullanici c) {
         try {
             Statement st = this.getConnection().createStatement();
 
-            String query = "delete from users where id=" + c.getId();
+            String query = "delete from kullanicilar where kullanici_id=" + c.getKullanici_id();
             int r = st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -60,11 +60,11 @@ public class LoginDAO extends DBConnection {
         }
     }
 
-    public void update(Users c) {
+    public void update(Kullanici c) {
         try {
             Statement st = this.getConnection().createStatement();
 
-            String query = "update users set username='" + c.getUsername()+ "',pasword='" + c.getPasword()+ "' where id=" + c.getId();
+            String query = "update kullanicilar set ad='" + c.getAd()+ "',soyad='" + c.getSoyad()+ "',sifre='" + c.getSifre()+ "',mail='" + c.getMail()+ "' where kullanci_id=" + c.getKullanici_id();
             int r = st.executeUpdate(query);
 
         } catch (Exception e) {
@@ -72,21 +72,21 @@ public class LoginDAO extends DBConnection {
         }
     }
 
-    public List<Users> getUsersList() {
-        List<Users> usersList = new ArrayList<>();
+    public List<Kullanici> getUsersList() {
+        List<Kullanici> kullaniciList = new ArrayList<>();
         try {
             Statement st = this.getConnection().createStatement();
 
-            String query = "select * from users";
+            String query = "select * from kullanicilar";
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
-                usersList.add(new Users(rs.getInt("id"), rs.getString("username"), rs.getString("pasword")));
+                kullaniciList.add(new Kullanici(rs.getInt("kullanici_id"), rs.getString("ad"), rs.getString("soyad"), rs.getString("sifre"), rs.getString("mail")));
 
             }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return usersList;
+        return kullaniciList;
     }
 }

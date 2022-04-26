@@ -11,14 +11,14 @@
         <h1>Login Page</h1>
         <hr/>
         <h:form rendered="#{validUser==null}"> 
-            Username: <h:inputText value="#{lc.user.username}"/><br/><!-- comment -->
-            Password: <h:inputText value="#{lc.user.pasword}"/> <br/>
+            Username: <h:inputText value="#{lc.kullanici.ad}"/><br/><!-- comment -->
+            Password: <h:inputText value="#{lc.kullanici.sifre}"/> <br/>
             <h:commandButton styleClass="btn btn-secondary btn-sm" action="#{lc.login()}" value="Login" /> 
 
         </h:form>
         <h:panelGroup rendered="#{validUser!=null}" layout="block"> 
-           Username: #{validUser.username}<br/><!-- comment -->
-            Password: #{validUser.pasword}<br/><!-- comment -->
+           Username: #{validUser.ad}<br/><!-- comment -->
+            Password: #{validUser.sifre}<br/><!-- comment -->
 
         </h:panelGroup>
          <h:form>
