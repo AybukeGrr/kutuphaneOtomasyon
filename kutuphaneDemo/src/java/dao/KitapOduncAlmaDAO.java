@@ -42,7 +42,7 @@ public class KitapOduncAlmaDAO extends DBConnection {
         try {
             Statement st = this.getConnection().createStatement();
 
-            String query = "update kitapOduncAlma set oduncAlanKisi_id='" + odunc.getKullanici().getKullanici_id() + ",oduncAlinanKitap_id='" + odunc.getKitap().getKitap_id() + "',iadeTarihi='" + odunc.getIadeTarihi() + "',oduncAlmaTarihi='" + odunc.getOduncAlmaTarihi() + "' where oduncAlma_id=" + odunc.getOduncAlma_id();
+            String query = "update kitapoduncalma set oduncalankisi_id='" + odunc.getKullanici().getKullanici_id() + "',oduncalinankitap_id='" + odunc.getKitap().getKitap_id() + "',iadetarihi='" + odunc.getIadeTarihi() + "',oduncalmatarihi='" + odunc.getOduncAlmaTarihi() + "' where oduncalma_id=" + odunc.getOduncAlma_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -54,7 +54,7 @@ public class KitapOduncAlmaDAO extends DBConnection {
         try {
             Statement st = this.getConnection().createStatement();
 
-            String query = "delete from kitapOduncAlma where oducanAlma_id=" + odunc.getOduncAlma_id();
+            String query = "delete from kitapOduncAlma where oduncalma_id=" + odunc.getOduncAlma_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -72,14 +72,14 @@ public class KitapOduncAlmaDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
 
-                Kullanici k = this.getKullaniciDao().findById(rs.getInt("oduncalankisi_id"));
-                Kitap ktp = this.getKitapDao().findById(rs.getInt("oduncalinankitap_id"));
+                Kullanici kullanici = this.getKullaniciDao().findById(rs.getInt("oduncalankisi_id"));
+                Kitap kitap = this.getKitapDao().findById(rs.getInt("oduncalinankitap_id"));
 
-                oduncList.add(new KitapOduncAlma(rs.getInt("oduncalma_id"), k, ktp, rs.getString("iadetarihi"), rs.getString("oduncalmatarihi")));
+                oduncList.add(new KitapOduncAlma(rs.getInt("oduncalma_id"), kullanici, kitap, rs.getString("iadetarihi"), rs.getString("oduncalmatarihi")));
             }
 
         } catch (Exception ex) {
-            System.out.println("Ödünç Alma"+ex.getMessage());
+            System.out.println("Ödünç Alma" + ex.getMessage());
         }
         return oduncList;
     }
@@ -106,7 +106,7 @@ public class KitapOduncAlmaDAO extends DBConnection {
     }
 
     public KullaniciDAO getKullaniciDao() {
-        if(kullaniciDao == null){
+        if (kullaniciDao == null) {
             this.kullaniciDao = new KullaniciDAO();
         }
         return kullaniciDao;
@@ -117,7 +117,7 @@ public class KitapOduncAlmaDAO extends DBConnection {
     }
 
     public KitapDAO getKitapDao() {
-        if(kitapDao == null){
+        if (kitapDao == null) {
             this.kitapDao = new KitapDAO();
         }
         return kitapDao;

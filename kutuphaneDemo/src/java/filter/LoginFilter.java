@@ -22,40 +22,35 @@ import java.io.IOException;
  */
 @WebFilter("/*")
 public class LoginFilter implements Filter {
-    
-   @Override
+
+    @Override
     public void doFilter(ServletRequest sr, ServletResponse sr1, FilterChain fc) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) sr;
         HttpServletResponse response = (HttpServletResponse) sr1;
 
         String url = request.getRequestURI();
-        HttpSession session = request.getSession();
-
-        Kullanici kullanici = null;
-        if (session != null) { //session nesnesi null değil ise; validUser değişkeninin içerisindeki kullanıcı alınır.
-            kullanici = (Kullanici) session.getAttribute("validUser");
-        }
+        Kullanici kullanici = (Kullanici) request.getSession().getAttribute("validUser");
 
         if (kullanici == null) {//kullanıcı yok ise 
-            if (url.contains("logout")) {
-                response.sendRedirect(request.getContextPath() + "/panel/login.xhtml");
+            if (url.contains("admin") || url.contains("logout")) {
+                response.sendRedirect(request.getContextPath() + "/login.xhtml");
             } else {
-                fc.doFilter(sr, sr1); // bu yazılmazsa akis kesilmis olur.(bu kod geçişe izin verir)
+                fc.doFilter(sr, sr1);
 
             }
-        } else { //kullanıcı var ise
-            if (url.contains("register")) {  // url register kelimesini içeriyorsa public sayfasına geçiş yap.(index.xhtml sayfası)
-                response.sendRedirect(request.getContextPath() + "/panel/index.xhtml");
+        } else {
+            if (url.contains("login") || url.contains("register")) {
+                response.sendRedirect(request.getContextPath() + "/admin/index.xhtml");
             } else if (url.contains("logout")) {
-                session.invalidate();
-                response.sendRedirect(request.getContextPath() + "/panel/login.xhtml");
+                request.getSession().invalidate();
+                response.sendRedirect(request.getContextPath() + "/login.xhtml");
 
             } else {
-                fc.doFilter(sr, sr1); // bu yazılmazsa akis kesilmis olur.(bu kod geçişe izin verir)
+                fc.doFilter(sr, sr1);
 
             }
         }
 
     }
-    
+
 }

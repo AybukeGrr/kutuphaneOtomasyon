@@ -32,15 +32,7 @@
 
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="bmd-label-floating">Mesaj Tarihi</label>
-                                <h:inputText  styleClass="form-control"  value="#{mesajController.entity.atilmaTarihi}">
-
-                                </h:inputText>
-
-                            </div>
-                        </div>
+                        
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Mesaj Atilma Tarihi</label>
@@ -50,7 +42,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <h:commandButton rendered="#{mesajController.entity.mesaj_id!=0}"  styleClass="btn btn-danger pull-left" value="Temizle"  action="#{mesajController.clear()}">
                         <f:ajax execute="mesaj-form" render="mesaj-form mesaj-table"/>

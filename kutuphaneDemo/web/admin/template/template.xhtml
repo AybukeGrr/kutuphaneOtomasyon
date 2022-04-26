@@ -27,6 +27,12 @@
                     <p class="8">
                         <hr/>
                         Hoş Geldiniz<br/>
+                        <h:panelGroup rendered="#{validUser!=null}" layout="block"> 
+                            Ad: #{validUser.ad}<br/>
+                            Soyad: #{validUser.soyad}<br/>
+
+                        </h:panelGroup>
+
                     </p>
                 </div>
                 <div class="sidebar-wrapper">

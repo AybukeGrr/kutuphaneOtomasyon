@@ -88,4 +88,23 @@ public class KullaniciDAO extends DBConnection {
         }
         return c;
     }
+
+    public Kullanici findByMail(String mail) {
+        Kullanici c = null;
+        try {
+            Statement st = this.getConnection().createStatement();
+            String query = "select * from kullanicilar where mail='" + mail+"'";
+
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                c = new Kullanici(rs.getInt("kullanici_id"), rs.getString("ad"), rs.getString("soyad"), rs.getString("sifre"), rs.getString("mail"));
+            }
+
+        } catch (Exception e) {
+            System.out.println("kullanici get by mail"+e.getMessage());
+        }
+
+        
+        return c;
+    }
 }

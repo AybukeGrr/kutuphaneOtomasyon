@@ -11,7 +11,7 @@
         <h1>Login Page</h1>
         <hr/>
         <h:form rendered="#{validUser==null}"> 
-            Username: <h:inputText value="#{lc.kullanici.ad}"/><br/><!-- comment -->
+            Username: <h:inputText value="#{lc.kullanici.mail}"/><br/><!-- comment -->
             Password: <h:inputText value="#{lc.kullanici.sifre}"/> <br/>
             <h:commandButton styleClass="btn btn-secondary btn-sm" action="#{lc.login()}" value="Login" /> 
 

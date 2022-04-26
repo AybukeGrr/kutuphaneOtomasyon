@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dao.KullaniciDAO;
 import entity.Kullanici;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
@@ -15,28 +16,44 @@ import java.io.Serializable;
  *
  * @author 90553
  */
-
-@Named(value="lc")
+@Named(value = "lc")
 @SessionScoped
-public class LoginController implements Serializable{
-     private Kullanici kullanici;
+public class LoginController implements Serializable {
+
+    private Kullanici kullanici;
+    private KullaniciDAO kullaniciDAO;
 
     public LoginController() {
-        
-        
+
     }
 
-    public void login(){
-        if(kullanici.getAd().equals("test") && kullanici.getSifre().equals("123")){ // bu durumda izin verilir yani oturuma eklenir.
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("validUser", kullanici);
-        }else{ //bu durumda izin verilmez
-            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Username or Password is wrong!"));
+    public String login() {
+        Kullanici loginKullanici = this.getKullaniciByMail(this.kullanici.getMail());
+        if (loginKullanici != null) {
+            if (kullanici.getMail().equals(loginKullanici.getMail()) && kullanici.getSifre().equals(loginKullanici.getSifre())) {
+                //bu durumda izin verilir yani oturuma eklenir.
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("validUser", loginKullanici);
+                return "/admin/index.xhtml?faces-redirect=true";
+            }
+//
+        } else { //bu durumda izin verilmez
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Username or Password is wrong!"));
+            
         }
+        return "/login.xhtml?faces-redirect=true";
+    }
+
+    private Kullanici getKullaniciByMail(String kullaniciMail) {
+        Kullanici loginKullanici = this.getKullaniciDAO().findByMail(kullaniciMail);
+        if (loginKullanici != null) {
+            return loginKullanici;
+        }
+        return null;
     }
 
     public Kullanici getKullanici() {
-          if(kullanici==null){
-            this.kullanici=new Kullanici();
+        if (kullanici == null) {
+            this.kullanici = new Kullanici();
         }
         return kullanici;
     }
@@ -44,4 +61,16 @@ public class LoginController implements Serializable{
     public void setKullanici(Kullanici user) {
         this.kullanici = user;
     }
+
+    public KullaniciDAO getKullaniciDAO() {
+        if (this.kullaniciDAO == null) {
+            this.kullaniciDAO = new KullaniciDAO();
+        }
+        return kullaniciDAO;
+    }
+
+    public void setKullaniciDAO(KullaniciDAO kullaniciDAO) {
+        this.kullaniciDAO = kullaniciDAO;
+    }
+
 }
