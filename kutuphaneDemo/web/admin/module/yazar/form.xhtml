@@ -19,7 +19,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Yazar Ad</label>
-                                <h:inputText  id="name" styleClass="form-control"  value = "#{writerManagedBean.ad}" >
+                                <h:inputText  id="name" styleClass="form-control"  value = "#{yazarController.entity.ad}" >
                                        <f:validateBean/>
                                 </h:inputText>
                                 <h:message for="name" style="color:red"/>
@@ -28,7 +28,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Yazar Soyad</label>
-                                <h:inputText id="surname" styleClass="form-control"  value = "#{writerManagedBean.soyad}" >
+                                <h:inputText id="surname" styleClass="form-control"  value = "#{yazarController.entity.soyad}" >
                                      <f:validateBean/>
                                 </h:inputText>
                                 <h:message for="surname" style="color:red"/>

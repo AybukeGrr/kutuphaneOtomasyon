@@ -4,14 +4,18 @@
  */
 package entity;
 
+import jakarta.validation.constraints.NotNull;
+
 /**
  *
  * @author Sevda
  */
 public class Yazar {
-    
+
     private int yazar_id;
+    @NotNull(message = "Yazar ismi bos olmaz.")
     private String ad;
+    @NotNull(message = "Yazar ismi bos olmaz.")
     private String soyad;
 
     public Yazar() {
@@ -46,6 +50,5 @@ public class Yazar {
     public void setSoyad(String soyad) {
         this.soyad = soyad;
     }
-    
-    
+
 }

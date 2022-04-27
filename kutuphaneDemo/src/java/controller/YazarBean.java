@@ -22,16 +22,20 @@ public class YazarBean implements Serializable {
     private Yazar entity;
     private YazarDAO dao;
     private List<Yazar> list;
-    
+
     public YazarBean() {
     }
-    
-    public String getTitle(int id){
+
+    public String getTitle(int id) {
         Yazar c = this.getDao().findById(id);
         return null;
     }
-    
-     public void create() {
+
+    public void clear() {
+        this.entity = new Yazar();
+    }
+
+    public void create() {
         this.getDao().create(entity);
         entity = new Yazar();
     }
@@ -40,9 +44,11 @@ public class YazarBean implements Serializable {
         this.getDao().delete(yazar);
         entity = new Yazar();
     }
-   public void entityUpdate(Yazar k) {
+
+    public void entityUpdate(Yazar k) {
         this.entity = k;
     }
+
     public void update() {
         this.getDao().update(entity);
         entity = new Yazar();
@@ -78,6 +84,5 @@ public class YazarBean implements Serializable {
     public void setList(List<Yazar> list) {
         this.list = list;
     }
-    
-    
+
 }

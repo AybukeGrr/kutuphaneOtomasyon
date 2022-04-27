@@ -31,12 +31,12 @@ public class LoginController implements Serializable {
         Kullanici loginKullanici = this.getKullaniciByMail(this.kullanici.getMail());
         if (loginKullanici != null) {
             if (kullanici.getMail().equals(loginKullanici.getMail()) && kullanici.getSifre().equals(loginKullanici.getSifre())) {
-                //bu durumda izin verilir yani oturuma eklenir.
+                
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("validUser", loginKullanici);
                 return "/admin/index.xhtml?faces-redirect=true";
             }
-//
-        } else { //bu durumda izin verilmez
+ 
+        } else {  
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Username or Password is wrong!"));
             
         }

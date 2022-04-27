@@ -6,6 +6,7 @@ package controller;
 
 import dao.KitapDAO;
 import entity.Kitap;
+import entity.Yazar;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -29,6 +30,10 @@ public class KitapBean implements Serializable {
     public String getTitle(int id) {
         Kitap c = this.getDao().findById(id);
         return null;
+    }
+
+    public void clear() {
+        this.entity = new Kitap();
     }
 
     public void create() {

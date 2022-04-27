@@ -38,6 +38,9 @@ public class KullaniciBean implements Serializable {
         this.getDao().create(entity);
         entity = new Kullanici();
     }
+     public void clear() {
+        this.entity = new Kullanici();
+    }
 
     public void entityUpdate(Kullanici k) {
         this.entity = k;

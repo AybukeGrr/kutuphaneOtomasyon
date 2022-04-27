@@ -35,6 +35,9 @@ public class KitapOduncAlmaBean implements Serializable {
         this.getDao().create(entity);
         entity = new KitapOduncAlma();
     }
+     public void clear() {
+        this.entity = new KitapOduncAlma();
+    }
 
     public void delete(KitapOduncAlma kitapOduncAlma) {
         this.getDao().delete(kitapOduncAlma);

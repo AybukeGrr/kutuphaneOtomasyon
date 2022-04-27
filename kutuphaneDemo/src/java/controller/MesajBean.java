@@ -36,6 +36,9 @@ public class MesajBean implements Serializable {
         this.getDao().create(entity);
         entity = new Mesaj();
     }
+    public void clear() {
+        this.entity = new Mesaj();
+    }
 
     public void delete(Mesaj mesaj) {
         this.getDao().delete(mesaj);

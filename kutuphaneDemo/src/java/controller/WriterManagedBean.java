@@ -21,7 +21,7 @@ import jakarta.validation.constraints.Size;
 @RequestScoped
 public class WriterManagedBean {
     
-//logın conttoller daki gibi bisi mi yapcsak login kontrolnde olan kodlar bi yapı standart kalıp bunda yok galiba öyle bişi
+
 
     @NotNull(message = "Yazar ismi bos olmaz.")
     private String ad;
