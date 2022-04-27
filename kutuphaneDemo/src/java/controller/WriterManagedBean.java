@@ -5,6 +5,7 @@
 package controller;
 
 import entity.Kullanici;
+import entity.Yazar;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.context.RequestScoped;
@@ -19,11 +20,13 @@ import jakarta.validation.constraints.Size;
 @Named(value = "writerManagedBean")
 @RequestScoped
 public class WriterManagedBean {
+    
+//logın conttoller daki gibi bisi mi yapcsak login kontrolnde olan kodlar bi yapı standart kalıp bunda yok galiba öyle bişi
 
-    @NotNull(message = "please enter User Name. It cant be null.")
+    @NotNull(message = "Yazar ismi bos olmaz.")
     private String ad;
 
-    @NotNull(message = "please enter User Name. It cant be null.")
+    @NotNull(message = "Yazar ismi bos olmaz.")
     private String soyad;
 
     public String getAd() {

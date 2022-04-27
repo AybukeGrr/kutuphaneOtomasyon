@@ -19,18 +19,19 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Yazar Ad</label>
-                                <h:inputText  styleClass="form-control"  value = "#{yazarController.entity.ad}" >
-
+                                <h:inputText  id="name" styleClass="form-control"  value = "#{writerManagedBean.ad}" >
+                                       <f:validateBean/>
                                 </h:inputText>
-
+                                <h:message for="name" style="color:red"/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Yazar Soyad</label>
-                                <h:inputText  styleClass="form-control"  value = "#{yazarController.entity.soyad}" >
-
+                                <h:inputText id="surname" styleClass="form-control"  value = "#{writerManagedBean.soyad}" >
+                                     <f:validateBean/>
                                 </h:inputText>
+                                <h:message for="surname" style="color:red"/>
 
                             </div>
                         </div>

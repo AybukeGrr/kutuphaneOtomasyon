@@ -27,7 +27,7 @@ public class YazarDAO extends DBConnection {
             st.executeUpdate(query);
 
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Yazar insert"+ex.getMessage());
         }
     }
 
