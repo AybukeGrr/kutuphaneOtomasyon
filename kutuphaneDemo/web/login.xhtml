@@ -2,15 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Login 05</title>
 
 
         <h:outputStylesheet library="css" name="style.css" />
-
-
-
 
     </h:head>
     <h:body>
@@ -31,15 +29,20 @@
                                     </div>
                                 </div>
 
-                                <h:form styleClass="signin-form">
+                                <h:form styleClass="signin-form"  rendered="#{validUser==null}">
                                     <div class="form-group mt-3">
-                                        <h:inputText styleClass="form-control" value="#{lc.kullanici.mail}"/>
+                                        <h:inputText id="mail" styleClass="form-control" value="#{lc.kullanici.mail}" validatorMessage="Geçersiz e-posta adresi">
+                                            <f:validateRegex pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"/>
+                                        </h:inputText>
+                                        <h:message for="mail" style="color:red"/>
 
                                         <label class="form-control-placeholder" for="username">Mail Adresi</label>
                                     </div>
                                     <div class="form-group mt-5">
-                                        <h:inputText  styleClass="form-control" value="#{lc.kullanici.sifre}"/>
-
+                                        <h:inputText  id="sifre" styleClass="form-control" value="#{lc.kullanici.sifre}" validatorMessage="Geçersiz bir şifre girdiniz">
+                                           <f:validateLength maximum="20" minimum="3"/>
+                                        </h:inputText>
+                                        <h:message for="sifre" style="color:red"/>
                                         <label class="form-control-placeholder" for="password">Şifre</label>
                                         <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                     </div>
@@ -47,6 +50,8 @@
                                         <h:commandButton styleClass="form-control btn btn-primary rounded submit px-3" action="#{lc.login()}" value="Login" /> 
 
                                     </div>
+
+
 
                                 </h:form>
 

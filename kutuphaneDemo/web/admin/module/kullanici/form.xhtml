@@ -19,7 +19,10 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="bmd-label-floating">Kullanıcı Adı</label>
-                                <h:inputText id="kullaniciAdi" styleClass="form-control"  value="#{kullaniciController.entity.ad}"/>
+                                <h:inputText id="kullaniciAdi" styleClass="form-control"  value="#{kullaniciController.entity.ad}" validatorMessage="Belirlenen aralıkta isim giriniz"> 
+                                     <f:validateLength maximum="10" minimum="5"/>
+                                </h:inputText>
+                                <h:message for="name" style="color:red"/>
                             </div>
                         </div>
                         <div class="col-md-6">
