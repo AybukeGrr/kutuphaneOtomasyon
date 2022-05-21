@@ -10,9 +10,18 @@ package entity;
  */
 public class Document {
     
+    private Long id;
     private String dosyaYolu;
     private String dosyaAdi;
     private String dosyaTipi;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getDosyaYolu() {
         return dosyaYolu;
