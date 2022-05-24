@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -78,13 +79,14 @@ public class KitapDAO extends DBConnection {
         }
     }
     
-    public List<Kitap> getList() {
+    public List<Kitap> getList(int page, int pageSize) {
         List<Kitap> kitapList = new ArrayList<>();
+        int start = (page-1)*pageSize;
         
         try {
             Statement st = this.getConnection().createStatement();
             
-            String query = "Select * from kitaplar";
+            String query = "select * from kitaplar order by kitap_id asc limit " + start+ "," +pageSize;
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 
@@ -97,6 +99,21 @@ public class KitapDAO extends DBConnection {
             System.out.println("kitap get list" + ex.getMessage());
         }
         return kitapList;
+    }
+    
+    public int count() {
+        int count = 0;
+        
+        try {
+            PreparedStatement pst = this.getConnection().prepareStatement("select count(kitap_id) as film_count from kitaplar");
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+            count = rs.getInt("kitap_count");
+            
+        } catch (Exception ex) {
+            System.out.println("kitap get list" + ex.getMessage());
+        }
+        return count;
     }
     
     public List<Yazar> getKitapYazar(int kitap_id) {

@@ -10,6 +10,7 @@ import entity.Yazar;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import static java.nio.file.Files.size;
 import java.util.List;
 
 /**
@@ -23,6 +24,43 @@ public class KitapBean implements Serializable {
     private Kitap entity;
     private KitapDAO dao;
     private List<Kitap> list;
+    
+    private int page = 1;
+    private int pageSize = 10;
+    private int pageCount;
+    
+    public void next(){
+        this.page++;
+    }
+    
+    public void previous(){
+        this.page--;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageCount() {
+        this.pageCount = (int) Math.ceil(this.getDao().count()/pageSize);
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
 
     public KitapBean() {
     }
@@ -78,7 +116,7 @@ public class KitapBean implements Serializable {
     }
 
     public List<Kitap> getList() {
-        this.list = this.getDao().getList();
+        this.list = this.getDao().getList(page, pageSize);
         return list;
     }
 
