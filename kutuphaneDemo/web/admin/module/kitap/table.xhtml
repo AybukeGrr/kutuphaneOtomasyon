@@ -13,8 +13,8 @@
             </div> 
             <h:form id="kitap-table">
                 <div class="btn-group">
-                    <h:commandButton action="#{kitapController.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
-                    <h:commandButton action="#{kitapController.next()}" value="Next" styleClass="btn btn-outline-dark"/>
+                    <h:commandButton action="#{kitapController.previous()}" value="Previous" styleClass="btn btn-outline-success"  />
+                    <h:commandButton action="#{kitapController.next()}" value="Next" styleClass="btn btn-outline-danger"/>
                 </div>
                 <h:dataTable class="table" value="#{kitapController.list}" var="kitap">
 
@@ -61,9 +61,6 @@
                         </h:commandLink>
 
                     </h:column>
-
-
-
 
                 </h:dataTable>
 
