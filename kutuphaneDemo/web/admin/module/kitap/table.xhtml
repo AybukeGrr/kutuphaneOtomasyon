@@ -12,6 +12,7 @@
                 <p class="card-category"> Burası Kitap Bilgilerinin oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div> 
             <h:form id="kitap-table">
+                Page #{kitapController.page} of #{kitapController.pageCount}
                 <div class="btn-group">
                     <h:commandButton action="#{kitapController.previous()}" value="Previous" styleClass="btn btn-outline-success"  />
                     <h:commandButton action="#{kitapController.next()}" value="Next" styleClass="btn btn-outline-danger"/>

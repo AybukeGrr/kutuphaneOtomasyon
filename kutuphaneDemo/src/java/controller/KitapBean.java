@@ -30,11 +30,21 @@ public class KitapBean implements Serializable {
     private int pageCount;
     
     public void next(){
-        this.page++;
+        if(this.page == this.getPageCount()){
+            this.page = 1;
+        }
+        else{
+            this.page++;
+        }
     }
     
     public void previous(){
-        this.page--;
+        if(this.page == 1){
+            this.page = this.getPageCount();
+        }
+        else{
+            this.page--;
+        }
     }
 
     public int getPage() {
