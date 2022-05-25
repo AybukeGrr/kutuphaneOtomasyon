@@ -17,9 +17,9 @@ import jakarta.validation.constraints.Size;
  *
  * @author 90553
  */
-@Named(value = "writerManagedBean")
+@Named(value = "yazarYonetimBean")
 @RequestScoped
-public class WriterManagedBean {
+public class YazarYonetimBean {
     
 
 
@@ -28,6 +28,10 @@ public class WriterManagedBean {
 
     @NotNull(message = "Yazar ismi bos olmaz.")
     private String soyad;
+    
+     public YazarYonetimBean() {
+    }
+
 
     public String getAd() {
         return ad;
@@ -44,11 +48,4 @@ public class WriterManagedBean {
     public void setSoyad(String soyad) {
         this.soyad = soyad;
     }
-
-    /**
-     * Creates a new instance of UserManagedBean
-     */
-    public WriterManagedBean() {
-    }
-
 }

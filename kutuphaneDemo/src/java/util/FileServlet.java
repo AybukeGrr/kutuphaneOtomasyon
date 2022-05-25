@@ -4,7 +4,7 @@
  */
 package util;
 
-import controller.DocumentBean;
+import controller.DosyaBean;
 import jakarta.inject.Inject;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,7 +24,7 @@ import java.nio.file.Files;
 public class FileServlet extends HttpServlet {
     
     @Inject
-    private DocumentBean dc;
+    private DosyaBean dc;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

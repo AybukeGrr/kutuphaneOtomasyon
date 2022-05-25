@@ -8,7 +8,7 @@ package entity;
  *
  * @author 90553
  */
-public class Document {
+public class Dosya {
     
     private Long id;
     private String dosyaYolu;

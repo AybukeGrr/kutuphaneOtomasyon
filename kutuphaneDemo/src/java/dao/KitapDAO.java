@@ -86,7 +86,7 @@ public class KitapDAO extends DBConnection {
         try {
             Statement st = this.getConnection().createStatement();
             
-            String query = "select * from kitaplar order by kitap_id asc limit " + start+ "," +pageSize;
+            String query = "select * from kitaplar order by kitap_id asc limit 0,2" + start+ "," +pageSize;
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 

@@ -4,7 +4,7 @@
  */
 package dao;
 
-import entity.Document;
+import entity.Dosya;
 import java.util.ArrayList;
 import java.util.List;
 import util.DBConnection;
@@ -19,14 +19,14 @@ import java.sql.SQLException;
  *
  * @author 90553
  */
-public class DocumentDAO {
-    public List <Document> findAll(){
-        List<Document> dList = new ArrayList<>();
+public class DosyaDAO {
+    public List <Dosya> findAll(){
+        List<Dosya> dList = new ArrayList<>();
         try {
-            PreparedStatement pst = this.getConnection().prepareStatement("select * from document");
+            PreparedStatement pst = this.getConnection().prepareStatement("select * from dosya");
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
-            Document d = new Document();
+            Dosya d = new Dosya();
             d.setId(rs.getLong("id"));
             d.setDosyaAdi(rs.getString("ad"));
             d.setDosyaTipi(rs.getString("tip"));
@@ -39,8 +39,8 @@ public class DocumentDAO {
         return dList; 
     }
     
-    public void insert(Document d) throws SQLException{
-        String query = "insert into document (ad, tip, yol) values (?,?,?)";
+    public void insert(Dosya d) throws SQLException{
+        String query = "insert into dosya (ad, tip, yol) values (?,?,?)";
         try {
             PreparedStatement pst = this.getConnection().prepareStatement(query);
             pst.setString(1, d.getDosyaAdi());

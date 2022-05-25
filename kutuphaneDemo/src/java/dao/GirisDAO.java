@@ -15,7 +15,7 @@ import util.DBConnection;
  *
  * @author 90553
  */
-public class LoginDAO extends DBConnection {
+public class GirisDAO extends DBConnection {
    public Kullanici findByID(int kullanici_id) {
         Kullanici c = null;
         try {

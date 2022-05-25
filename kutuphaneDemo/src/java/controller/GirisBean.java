@@ -18,12 +18,12 @@ import java.io.Serializable;
  */
 @Named(value = "lc")
 @SessionScoped
-public class LoginController implements Serializable {
+public class GirisBean implements Serializable {
 
     private Kullanici kullanici;
     private KullaniciDAO kullaniciDAO;
 
-    public LoginController() {
+    public GirisBean() {
 
     }
 
@@ -31,14 +31,14 @@ public class LoginController implements Serializable {
         Kullanici loginKullanici = this.getKullaniciByMail(this.kullanici.getMail());
         if (loginKullanici != null) {
             if (kullanici.getMail().equals(loginKullanici.getMail()) && kullanici.getSifre().equals(loginKullanici.getSifre())) {
-                
+
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("validUser", loginKullanici);
                 return "/admin/index.xhtml?faces-redirect=true";
             }
- 
-        } else {  
+
+        } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Username or Password is wrong!"));
-            
+
         }
         return "/login.xhtml?faces-redirect=true";
     }
@@ -49,6 +49,11 @@ public class LoginController implements Serializable {
             return loginKullanici;
         }
         return null;
+    }
+
+    public String logout() {
+
+        return "logout?faces-redirect=true";
     }
 
     public Kullanici getKullanici() {

@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="form-group mt-5">
                                         <h:inputText  id="sifre" styleClass="form-control" value="#{lc.kullanici.sifre}" validatorMessage="Geçersiz bir şifre girdiniz">
-                                           <f:validateLength maximum="20" minimum="3"/>
+                                            <f:validateLength maximum="20" minimum="3"/>
                                         </h:inputText>
                                         <h:message for="sifre" style="color:red"/>
                                         <label class="form-control-placeholder" for="password">Şifre</label>
@@ -48,11 +48,7 @@
                                     </div>
                                     <div class="form-group">
                                         <h:commandButton styleClass="form-control btn btn-warning rounded submit px-3" action="#{lc.login()}" value="Login" /> 
-
                                     </div>
-
-
-
                                 </h:form>
 
                             </div>
