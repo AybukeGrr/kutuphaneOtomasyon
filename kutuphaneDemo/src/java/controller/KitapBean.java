@@ -86,6 +86,7 @@ public class KitapBean implements Serializable {
 
     public void create() {
         this.getDao().create(entity);
+        System.out.println("test");
         entity = new Kitap();
     }
 
