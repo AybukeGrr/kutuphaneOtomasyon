@@ -126,7 +126,7 @@ public class KitapBean implements Serializable {
     }
 
     public List<Kitap> getList() {
-        this.list = this.getDao().getList(page, pageSize);
+        this.list = this.getDao().getList(page, pageSize,1);
         return list;
     }
 

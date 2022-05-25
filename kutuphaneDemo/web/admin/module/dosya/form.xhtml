@@ -1,38 +1,38 @@
-    <?xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition  xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="template/template.xhtml"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
 <ui:define name="content">
 
         <h:form enctype="multipart/form-data">
             <div class="form-group">
             <label>File</label>
-            <h:inputFile value="#{documentController.doc}" styleClass="custom-file"/>
+            <h:inputFile value="#{dosyaController.doc}" styleClass="custom-file"/>
             </div>
-            <h:commandButton action="#{documentController.upload}" value="Upload" styleClass="btn btn-primary" />
+            <h:commandButton action="#{dosyaController.upload}" value="Upload" styleClass="btn btn-primary" />
         </h:form>
         <hr/>
 
-        <h:dataTable styleClass="table" value="#{documentController.documentList}" var="d">
+        <h:dataTable styleClass="table" value="#{dosyaController.dosyaList}" var="d">
             <h:column>
                 <f:facet name="header">ID</f:facet>
-                #{document.id}
+                #{dosya.id}
             </h:column>
             <h:column>
                 <f:facet name="header">NAME</f:facet>
-                #{document.ad}
+                #{dosya.ad}
             </h:column>
             <h:column>
                 <f:facet name="header">PATH</f:facet>
-                #{document.yol}
+                #{dosya.yol}
             </h:column>
             <h:column>
                 <f:facet name="header">TYPE</f:facet>
-                #{document.tip}
+                #{dosya.tip}
             </h:column>
             <h:column>
                 <h:panelGroup layout="block" rendered="#{d.dosyaTipi.contains('image')}">

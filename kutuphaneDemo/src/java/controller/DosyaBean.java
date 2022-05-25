@@ -29,7 +29,7 @@ public class DosyaBean implements Serializable{
     
     private Part doc;
     
-    private String uploadTo = "/Users/90553/Desktop/upload/";
+    private String uploadTo = "C:/Users/Sevda/Desktop/upload/";
     
     public void upload(){
         try {
@@ -42,7 +42,7 @@ public class DosyaBean implements Serializable{
             dosya.setDosyaAdi(f.getName());
             dosya.setDosyaTipi(doc.getContentType());
             
-            this.getDosyaDao().insert(dosya);
+            this.getDosyaDao().create(dosya);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

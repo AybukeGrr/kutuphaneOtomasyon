@@ -7,34 +7,41 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-warning">
-                <h4 class="card-title d#{$infix}-inline-flex ">Kategorilar Tablosu</h4>
-                <p class="card-category"> Burası Kategori Bilgilerinin Oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
+                <h4 class="card-title d#{$infix}-inline-flex ">Dosyalar Tablosu</h4>
+                <p class="card-category"> Burası Dosya Bilgilerinin Oldugu Tablo Burada Ekleme Listeleme Güncelleme İşlemeleri Yapılacaktır</p>
             </div> 
             <h:form id="kategori-table">
-                <h:dataTable class="table" value="#{kategoriController.list}" var="kategori">
+                <h:dataTable class="table" value="#{dosyaController.dosyaList}" var="kategori">
 
                     <h:column>
                         <f:facet name="header"><b class="text-primary">ID</b></f:facet> 
-                            #{kategori.kategori_id}
+                            #{dosya.id}
                     </h:column>
                    
                     <h:column>
-                        <f:facet name="header"><b class="text-primary">Kategori Adi</b></f:facet> 
-                            #{kategori.ad} 
+                        <f:facet name="header"><b class="text-primary">Dosya Adi</b></f:facet> 
+                            #{dosya.ad} 
                     </h:column>
-                    
+                       <h:column>
+                        <f:facet name="header"><b class="text-primary">Dosya Tipi</b></f:facet> 
+                            #{dosya.tip}
+                    </h:column>
+                   
                     <h:column>
-                        <h:commandLink action="#{kategoriController.entityUpdate(kategori)}">
+                        <f:facet name="header"><b class="text-primary">Dosya Yolu</b></f:facet> 
+                            #{dosya.yol} 
+                    </h:column>
+                    <h:column>
+                        <h:commandLink action="#{kategoriController.entityUpdate(dosya)}">
                             <h:outputText value="" /> <i class="material-icons text-success">edit</i>
-                            <f:ajax execute="@this" render="kategori-form"/>
+                            <f:ajax execute="@this" render="dosya-form"/>
                         </h:commandLink>
 
                     </h:column>
-                    
                     <h:column>
-                        <h:commandLink action="#{kategoriController.delete(kategori)}">
+                        <h:commandLink action="#{kategoriController.delete(dosya)}">
                             <h:outputText value="" /> <i class="material-icons text-danger">close</i> 
-                            <f:ajax execute="@this" render="kategori-form kategori-table"/>
+                            <f:ajax execute="@this" render="dosya-form dosya-table"/>
                         </h:commandLink>
 
                     </h:column>

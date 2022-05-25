@@ -39,7 +39,7 @@ public class DosyaDAO {
         return dList; 
     }
     
-    public void insert(Dosya d) throws SQLException{
+    public void create(Dosya d) throws SQLException{
         String query = "insert into dosya (ad, tip, yol) values (?,?,?)";
         try {
             PreparedStatement pst = this.getConnection().prepareStatement(query);
