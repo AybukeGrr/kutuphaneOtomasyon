@@ -6,43 +6,46 @@ package controller;
 
 import dao.DosyaDAO;
 import entity.Dosya;
-import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
-import java.io.Serializable;
-import java.util.List;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.servlet.http.Part;
 import java.io.File;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.nio.file.Files;
+import java.util.List;
 
 /**
  *
- * @author 90553 
+ * @author 90553
  */
 @Named(value = "dosyaController")
 @SessionScoped
-public class DosyaBean implements Serializable{
-    
+public class DosyaBean implements Serializable {
+
+    public DosyaBean() {
+    }
+
     private Dosya dosya;
     private List<Dosya> dosyaList;
     private DosyaDAO dosyaDao;
-    
+
     private Part doc;
-    
-    private String uploadTo = "C:/Users/Sevda/Desktop/upload/";
-    
-    public void upload(){
+    private final String uploadTo = "/C:/Users/90553/Desktop/upload/";
+
+    public void upload() {
         try {
             InputStream input = doc.getInputStream();
-            File f = new File(uploadTo+doc.getSubmittedFileName());
+            File f = new File(uploadTo + doc.getSubmittedFileName());
             Files.copy(input, f.toPath());
-            
+
             dosya = this.getDosya();
             dosya.setDosyaYolu(f.getParent());
             dosya.setDosyaAdi(f.getName());
             dosya.setDosyaTipi(doc.getContentType());
-            
-            this.getDosyaDao().create(dosya);
+
+            this.getDosyaDao().insert(dosya);
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -53,7 +56,7 @@ public class DosyaBean implements Serializable{
     }
 
     public Dosya getDosya() {
-        if(this.dosya == null){
+        if (this.dosya == null) {
             this.dosya = new Dosya();
         }
         return dosya;
@@ -64,7 +67,7 @@ public class DosyaBean implements Serializable{
     }
 
     public List<Dosya> getDosyaList() {
-        this.dosyaList  = this.getDosyaDao().findAll(); 
+        this.dosyaList = this.getDosyaDao().findAll();
         return dosyaList;
     }
 
@@ -73,8 +76,8 @@ public class DosyaBean implements Serializable{
     }
 
     public DosyaDAO getDosyaDao() {
-        if(this.dosyaDao == null){
-            this.dosyaDao = new DosyaDAO ();
+        if (this.dosyaDao == null) {
+            this.dosyaDao = new DosyaDAO();
         }
         return dosyaDao;
     }
@@ -92,5 +95,5 @@ public class DosyaBean implements Serializable{
     }
     
     
-    
+
 }

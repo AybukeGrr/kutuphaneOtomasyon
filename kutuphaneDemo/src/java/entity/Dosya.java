@@ -1,4 +1,4 @@
-  /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -10,16 +10,16 @@ package entity;
  */
 public class Dosya {
     
-    private Long id;
+    private int id;
     private String dosyaYolu;
     private String dosyaAdi;
     private String dosyaTipi;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -46,6 +46,6 @@ public class Dosya {
     public void setDosyaTipi(String dosyaTipi) {
         this.dosyaTipi = dosyaTipi;
     }
-    
+
     
 }
