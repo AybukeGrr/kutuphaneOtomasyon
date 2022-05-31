@@ -25,10 +25,12 @@ public class KitapDAO extends DBConnection {
     private KategoriDAO kategoriDao;
 
     public void create(Kitap kitap) {
+
+      
         try {
             Statement st = this.getConnection().createStatement();
 
-            String query = "insert into kitaplar(kategori_id,ad,sayfaSayisi,kitapKapagi,yazar_id)values('" + kitap.getKategori().getKategori_id() + "','" + kitap.getAd() + "','" + kitap.getSayfaSayisi() + "','" + kitap.getKitapKapagi() + "','" + kitap.getYazarlar() + "')";
+            String query = "insert into kitaplar(kategori_id,ad,sayfaSayisi,kitapKapagi)values('" + kitap.getKategori().getKategori_id() + "','" + kitap.getAd() + "','" + kitap.getSayfaSayisi() + "','" + kitap.getKitapKapagi() + "')";
             st.executeUpdate(query);
 
             ResultSet rs = st.executeQuery("select max(kitap_id) as mid from kitaplar");
@@ -37,8 +39,9 @@ public class KitapDAO extends DBConnection {
             int kitap_id = rs.getInt("mid");
 
             for (Yazar yazar : kitap.getYazarlar()) {
-                query = "insert into yazarlar_kitaplar (yazar_id,kitap_id)values(" + yazar.getYazar_id() + ", " + kitap_id + ")";
+                query = "insert into yazarlar_kitaplar (yazar_id,kitap_id) values (" + yazar.getYazar_id() + " , " + kitap_id + ")";
                 st.executeUpdate(query);
+               
             }
 
         } catch (Exception ex) {
@@ -56,7 +59,7 @@ public class KitapDAO extends DBConnection {
             st.executeUpdate("delete from yazarlar_kitaplar where kitap_id=" + kitap.getKitap_id());
 
             for (Yazar yazar : kitap.getYazarlar()) {
-                query = "insert into yazarlar_kitaplar (yazar_id,kitap_id) values(" + yazar.getYazar_id() + " , " + kitap.getKitap_id() + ")";
+                query = "insert into yazarlar_kitaplar (yazar_id,kitap_id) values (" + yazar.getYazar_id() + " , " + kitap.getKitap_id() + ")";
                 st.executeUpdate(query);
             }
 
@@ -111,6 +114,7 @@ public class KitapDAO extends DBConnection {
             ResultSet rs = pst.executeQuery();
             rs.next();
             count = rs.getInt("kitap_count");
+           
 
         } catch (Exception ex) {
             System.out.println("kitap get list" + ex.getMessage());

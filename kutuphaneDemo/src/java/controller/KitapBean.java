@@ -24,25 +24,23 @@ public class KitapBean implements Serializable {
     private Kitap entity;
     private KitapDAO dao;
     private List<Kitap> list;
-    
+
     private int page = 1;
-    private int pageSize = 10;
+    private int pageSize = 5;
     private int pageCount;
-    
-    public void next(){
-        if(this.page == this.getPageCount()){
+
+    public void next() {
+        if (this.page == getPageCount()) {
             this.page = 1;
-        }
-        else{
+        } else {
             this.page++;
         }
     }
-    
-    public void previous(){
-        if(this.page == 1){
-            this.page = this.getPageCount();
-        }
-        else{
+
+    public void previous() {
+        if (this.page == 1) {
+            this.page = getPageCount();
+        } else {
             this.page--;
         }
     }
@@ -64,7 +62,8 @@ public class KitapBean implements Serializable {
     }
 
     public int getPageCount() {
-        this.pageCount = (int) Math.ceil(this.getDao().count()/pageSize);
+        this.pageCount = (int) Math.ceil(this.getDao().count() / (double) this.pageSize);
+
         return pageCount;
     }
 
@@ -85,8 +84,7 @@ public class KitapBean implements Serializable {
     }
 
     public void create() {
-        this.getDao().create(entity);
-        System.out.println("test");
+        this.getDao().create(this.entity);
         entity = new Kitap();
     }
 
@@ -127,7 +125,7 @@ public class KitapBean implements Serializable {
     }
 
     public List<Kitap> getList() {
-        this.list = this.getDao().getList(page, pageSize,1);
+        this.list = this.getDao().getList(page, pageSize, 0);
         return list;
     }
 

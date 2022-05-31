@@ -42,7 +42,7 @@
                     <h:column>
                         <f:facet name="header"><b class="text-primary">Kitap Yazarı</b></f:facet> 
                         <ui:repeat var="yazar" value="#{kitap.yazarlar}">
-                            #{yazar.ad}
+                            #{yazar.ad } #{yazar.soyad}
                         </ui:repeat>
 
                     </h:column>

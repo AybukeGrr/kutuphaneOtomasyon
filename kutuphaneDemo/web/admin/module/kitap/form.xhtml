@@ -50,10 +50,12 @@
                             </div>
                         </div>
                         <div class="col-md-6">
+
                             <div class="form-group">
                                 <label class="bmd-label-floating">Kitap Yazarı</label>
-                                <h:inputText id="yazarlar" styleClass="form-control"  value="#{kitapController.entity.yazarlar}"  >
-                                </h:inputText>
+                                <h:selectManyMenu styleClass="custom-select form-control " style="height: 60px;" id="yazarlar"  value="#{kitapController.entity.yazarlar}" converter="yazarConverter">
+                                    <f:selectItems value="#{yazarController.list}" var="yazar" itemValue="#{yazar}" itemLabel="#{yazar.ad } #{yazar.soyad} "/>
+                                </h:selectManyMenu>                                
                             </div>
                         </div>
                     </div>

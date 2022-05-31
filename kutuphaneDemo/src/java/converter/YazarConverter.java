@@ -20,19 +20,18 @@ import java.util.List;
 public class YazarConverter implements Converter {
 
     private YazarDAO yazarDao;
-    
 
     @Override
     public Object getAsObject(FacesContext arg0, UIComponent arg1, String string) {
         int id = Integer.valueOf(string);
-        List<Yazar> yazarlar = (List<Yazar>) this.getYazarDao().findById(id);
-        return yazarlar;
+        Yazar yazar = this.getYazarDao().findById(id);
+        return yazar;
     }
 
     @Override
     public String getAsString(FacesContext arg0, UIComponent arg1, Object t) {
-        List<Yazar> yazarlar = (List<Yazar>) (Yazar) t;
-        return String.valueOf(yazarlar.get(0));
+        Yazar yazarlar = (Yazar) t;
+        return String.valueOf(yazarlar.getYazar_id());
     }
 
     public YazarDAO getYazarDao() {

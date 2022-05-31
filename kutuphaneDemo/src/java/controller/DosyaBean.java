@@ -31,7 +31,7 @@ public class DosyaBean implements Serializable {
     private DosyaDAO dosyaDao;
 
     private Part doc;
-    private final String uploadTo = "/C:/Users/90553/Desktop/upload/";
+    private final String uploadTo = "/C:/Users/Sevda/Desktop/upload/";
 
     public void upload() {
         try {
