@@ -75,7 +75,7 @@ public class KitapDAO extends DBConnection {
             String query = "delete from kitaplar where kitap_id=" + kitap.getKitap_id();
             st.executeUpdate(query);
 
-            st.executeUpdate("delete from yazarlar_kitaplar where kitap_id=" + kitap.getKitap_id());
+            
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

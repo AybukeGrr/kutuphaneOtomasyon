@@ -36,7 +36,7 @@ public class KategoriDAO extends DBConnection {
         try {
             Statement st = this.getConnection().createStatement();
 
-            String query = "update kategoriler set ad='" + kategori.getAd() + "' where kategori_id="+kategori.getKategori_id();
+            String query = "update kategoriler set ad='" + kategori.getAd() + "' where kategori_id=" + kategori.getKategori_id();
             st.executeUpdate(query);
 
         } catch (Exception ex) {
@@ -44,7 +44,19 @@ public class KategoriDAO extends DBConnection {
         }
     }
     
-    public int count() {
+    public void delete(Kategori kategori) {
+        try {
+            Statement st = this.getConnection().createStatement();
+
+            String query = "delete from kategoriler where kategori_id=" + kategori.getKategori_id();
+            st.executeUpdate(query);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+     public int count() {
         int count = 0;
 
         try {
@@ -58,18 +70,6 @@ public class KategoriDAO extends DBConnection {
             System.out.println("kategori get list" + ex.getMessage());
         }
         return count;
-    }
-
-    public void delete(Kategori kategori) {
-        try {
-            Statement st = this.getConnection().createStatement();
-
-            String query = "delete from kategoriler where kategori_id=" + kategori.getKategori_id();
-            st.executeUpdate(query);
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
     }
 
     public List<Kategori> getList() {
@@ -90,17 +90,18 @@ public class KategoriDAO extends DBConnection {
         }
         return kategoriList;
     }
-        public Kategori findById(int id){
+
+    public Kategori findById(int id) {
         Kategori c = null;
         try {
             Statement st = this.getConnection().createStatement();
-            String query = "select * from kategoriler where kategori_id="+id;
-            
+            String query = "select * from kategoriler where kategori_id=" + id;
+
             ResultSet rs = st.executeQuery(query);
-            while(rs.next()){
+            while (rs.next()) {
                 c = new Kategori(rs.getInt("kategori_id"), rs.getString("ad"));
             }
-            
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

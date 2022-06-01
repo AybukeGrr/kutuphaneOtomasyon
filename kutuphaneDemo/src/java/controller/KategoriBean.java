@@ -25,7 +25,7 @@ public class KategoriBean implements Serializable {
     private KategoriDAO dao;
     private List<Kategori> list;
     
-     private int page = 1;
+   private int page = 1;
     private int pageSize = 5;
     private int pageCount;
 
@@ -70,7 +70,6 @@ public class KategoriBean implements Serializable {
     public void setPageCount(int pageCount) {
         this.pageCount = pageCount;
     }
-
     
     public KategoriBean() {
     }

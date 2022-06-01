@@ -21,7 +21,7 @@ public class DosyaDAO extends DBConnection {
     public List<Dosya> findAll() {
         List<Dosya> dList = new ArrayList<>();
         try {
-            PreparedStatement pst = this.getConnection().prepareStatement("select * from dosya");
+            PreparedStatement pst = this.getConnection().prepareStatement("select * from document");
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 Dosya d = new Dosya();
@@ -40,7 +40,7 @@ public class DosyaDAO extends DBConnection {
     }
 
     public void insert(Dosya d) {
-        String query = "insert into dosya (yol,ad,tip) values(?,?,?)";
+        String query = "insert into document (yol,ad,tip) values(?,?,?)";
         try {
             PreparedStatement pst = this.getConnection().prepareStatement(query);
             pst.setString(1, d.getDosyaYolu());
