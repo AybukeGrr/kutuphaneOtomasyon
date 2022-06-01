@@ -8,6 +8,7 @@ import entity.Kategori;
 import util.DBConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -41,6 +42,22 @@ public class KategoriDAO extends DBConnection {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+    }
+    
+    public int count() {
+        int count = 0;
+
+        try {
+            PreparedStatement pst = this.getConnection().prepareStatement("select count(kategori_id) as kategori_count from kategoriler");
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+            count = rs.getInt("kategori_count");
+           
+
+        } catch (Exception ex) {
+            System.out.println("kategori get list" + ex.getMessage());
+        }
+        return count;
     }
 
     public void delete(Kategori kategori) {

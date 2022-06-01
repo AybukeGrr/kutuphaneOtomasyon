@@ -12,45 +12,54 @@
 
     </h:head>
     <h:body>
-        <section class="ftco-section">
+        <section class="ftco-section"> 
+
             <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div style="width:380px">
+                            <img  style="width: 580px; height:500px; float: left" src="https://images.pexels.com/photos/2925304/pexels-photo-2925304.jpeg" alt="Card image"/>
+                        </div>
+                    </div>
 
-                <div class="row justify-content-center">
-                    <div class="p-3 mb-3 bg-info text-dark">
-                        <div class="wrap">
 
-                            <div class="login-wrap p-5 p-md-5">
-                                <div class="d-flex">
-                                    <div class="w-100">
-                                        <h5 class="mb-4" style="align-content: center">Giriş Yap</h5>
+                    <div class="col-md-6">
+                        <div class="p-3 mb-3 bg-info text-dark">
+                            <div class="wrap">
+
+                                <div class="login-wrap p-4 p-md-5">
+                                    <div class="d-flex">
+                                        <div class="w-100">
+                                            <h3 class="mb-4" style="align-items: ">Giriş Yap</h3>
+                                        </div>
+                                        <div class="w-100">
+
+                                        </div>
                                     </div>
-                                    <div class="w-100">
 
-                                    </div>
+                                    <h:form styleClass="signin-form" style="margin-bottom: 50px; margin-top: 45px; " rendered="#{validUser==null}">
+                                        <div class="form-group mt-3">
+                                            <h:inputText id="mail" styleClass="form-control" value="#{lc.kullanici.mail}" validatorMessage="Geçersiz e-posta adresi">
+                                                <f:validateRegex pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"/>
+                                            </h:inputText>
+                                            <h:message for="mail" style="color:red"/>
+
+                                            <label class="form-control-placeholder" for="username">Mail Adresi</label>
+                                        </div>
+                                        <div class="form-group mt-5">
+                                            <h:inputText  id="sifre" styleClass="form-control" value="#{lc.kullanici.sifre}" validatorMessage="Geçersiz bir şifre girdiniz">
+                                                <f:validateLength maximum="20" minimum="3"/>
+                                            </h:inputText>
+                                            <h:message for="sifre" style="color:red"/>
+                                            <label class="form-control-placeholder" for="password">Şifre</label>
+                                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <h:commandButton styleClass="form-control btn btn-warning rounded submit px-3" action="#{lc.login()}" value="Login" /> 
+                                        </div>
+                                    </h:form>
+
                                 </div>
-
-                                <h:form styleClass="signin-form"  rendered="#{validUser==null}">
-                                    <div class="form-group mt-3">
-                                        <h:inputText id="mail" styleClass="form-control" value="#{lc.kullanici.mail}" validatorMessage="Geçersiz e-posta adresi">
-                                            <f:validateRegex pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"/>
-                                        </h:inputText>
-                                        <h:message for="mail" style="color:red"/>
-
-                                        <label class="form-control-placeholder" for="username">Mail Adresi</label>
-                                    </div>
-                                    <div class="form-group mt-5">
-                                        <h:inputText  id="sifre" styleClass="form-control" value="#{lc.kullanici.sifre}" validatorMessage="Geçersiz bir şifre girdiniz">
-                                            <f:validateLength maximum="20" minimum="3"/>
-                                        </h:inputText>
-                                        <h:message for="sifre" style="color:red"/>
-                                        <label class="form-control-placeholder" for="password">Şifre</label>
-                                        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <h:commandButton styleClass="form-control btn btn-warning rounded submit px-3" action="#{lc.login()}" value="Login" /> 
-                                    </div>
-                                </h:form>
-
                             </div>
                         </div>
                     </div>
@@ -65,4 +74,3 @@
 
     </h:body>
 </html>
-
